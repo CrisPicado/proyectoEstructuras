@@ -8,6 +8,6 @@ package clases;
  *
  * @author Pc
  */
-public class jbnkjb {
+public class ppp {
     
 }
