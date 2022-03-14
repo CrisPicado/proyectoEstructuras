@@ -9,6 +9,6 @@ package clases;
  *
  * @author ASUS
  */
-public class Estudiates {
+public class Estudiantes {
     
 }
