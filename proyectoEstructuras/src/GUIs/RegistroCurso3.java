@@ -242,7 +242,7 @@ public class RegistroCurso3 extends javax.swing.JFrame {
     public String[] getHorarioCurso3(String tipoHorario) {
 
         String[] horarios = new String[5];
-        //Editar horarios
+        
         if (tipoHorario.equals("Matutino")) {
             horarios[0] = "L (7 am - 10 am)";
             horarios[1] = "K (8 am - 11 am)";
