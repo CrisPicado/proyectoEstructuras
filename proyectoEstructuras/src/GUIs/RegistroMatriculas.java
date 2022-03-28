@@ -292,7 +292,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
             horarios[4] = "V (10 pm - 1 am)";
         }
         //idea implementar pila
-        for(int x=0;x<5;x++){
+        for(int x=0;x<4;x++){
             
         }
         return horarios;
