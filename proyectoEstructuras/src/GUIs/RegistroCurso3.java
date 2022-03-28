@@ -7,28 +7,18 @@ package GUIs;
 
 import java.awt.event.ItemEvent;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Cris Picado
  */
-public class RegistroMatriculas extends javax.swing.JFrame {
+public class RegistroCurso3 extends javax.swing.JFrame {
 
-    DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula","Nombre","Apellido Paterno","Apellido Materno","Contacto","Tipo Horario","Horario"};
-    String[] datos = new String[7]; 
-    
     /**
-     * Creates new form RegistroEstudiantes
+     * Creates new form RegistroCurso3
      */
-    public RegistroMatriculas() {
+    public RegistroCurso3() {
         initComponents();
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("Registro Matricula Curso1");
-        modelo = new DefaultTableModel(null,titulos);
-        tblRegistro.setModel(modelo);
     }
 
     /**
@@ -41,30 +31,29 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        panelRojo = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txtCed = new javax.swing.JTextField();
-        txtNom = new javax.swing.JTextField();
-        txtApP = new javax.swing.JTextField();
-        txtContacto = new javax.swing.JTextField();
-        txtApM = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRegistro = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         cbxTH = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        txtCed = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtNom = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtApP = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtContacto = new javax.swing.JTextField();
         cbxHorarios = new javax.swing.JComboBox<>();
+        txtApM = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelRojo.setBackground(new java.awt.Color(255, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(255, 204, 102));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -80,7 +69,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(336, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -89,36 +78,6 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-
-        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Número de Cédula:");
-
-        jLabel3.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Nombre:");
-
-        jLabel4.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Apellido Paterno:");
-
-        jLabel5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Apellido Materno:");
-
-        jLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Número de contacto:");
-
-        txtCed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
-        txtNom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
-        txtApP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
-        txtContacto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
-        txtApM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -145,103 +104,120 @@ public class RegistroMatriculas extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Número de Cédula:");
+
+        txtCed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nombre:");
+
+        txtNom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Apellido Paterno:");
+
+        txtApP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
+        jLabel5.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Apellido Materno:");
+
+        txtContacto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
         cbxHorarios.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         cbxHorarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  -Horarios Disponibles-" }));
         cbxHorarios.setToolTipText("");
+
+        txtApM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Número de contacto:");
 
         jLabel8.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Horarios Disponibles:");
 
-        javax.swing.GroupLayout panelRojoLayout = new javax.swing.GroupLayout(panelRojo);
-        panelRojo.setLayout(panelRojoLayout);
-        panelRojoLayout.setHorizontalGroup(
-            panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelRojoLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRojoLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelRojoLayout.createSequentialGroup()
-                        .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelRojoLayout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(35, 35, 35)
                                 .addComponent(txtApM))
-                            .addGroup(panelRojoLayout.createSequentialGroup()
-                                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
-                                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCed, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(panelRojoLayout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRojoLayout.createSequentialGroup()
-                                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel8))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbxHorarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cbxTH, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(57, 57, 57))))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30)))
+                .addContainerGap())
         );
-        panelRojoLayout.setVerticalGroup(
-            panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRojoLayout.createSequentialGroup()
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(38, 38, 38)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(29, 29, 29)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(26, 26, 26)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtApM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(97, 97, 97)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addGap(0, 74, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelRojo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRojo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 970, 580));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -251,54 +227,48 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
 
             if(this.cbxTH.getSelectedIndex()> 0){
-                
-               this.cbxHorarios.setModel(new DefaultComboBoxModel(this.getHorariosEspa(this.cbxTH.getSelectedItem().toString())));
-               
+
+                this.cbxHorarios.setModel(new DefaultComboBoxModel(this.getHorarioCurso3(this.cbxTH.getSelectedItem().toString())));
+
             }else if(this.cbxTH.getSelectedIndex()== 0){
                 String[] opcion = new String[1];
                 opcion[0] = "  -Horarios Disponibles-";
                 this.cbxHorarios.setModel(new DefaultComboBoxModel(opcion));
-           }
-            
+            }
+
         }
     }//GEN-LAST:event_cbxTHItemStateChanged
 
-    public String[] getHorariosEspa(String tipoHorario) {
+    public String[] getHorarioCurso3(String tipoHorario) {
 
         String[] horarios = new String[5];
-        
+        //Editar horarios
         if (tipoHorario.equals("Matutino")) {
-            horarios[0] = "L (6 am - 9 am)";
-            horarios[1] = "K (7 am - 10 am)";
-            horarios[2] = "M (8 am - 11 am)";
+            horarios[0] = "L (7 am - 10 am)";
+            horarios[1] = "K (8 am - 11 am)";
+            horarios[2] = "M (9 am - 12 am)";
             horarios[3] = "J (6 am - 9 am)";
             horarios[4] = "V (7 am - 10 am)";
         }
 
         if (tipoHorario.equals("Vespertino")) {
-            horarios[0] = "L (6 pm - 9 pm)";
-            horarios[1] = "K (2 pm - 5 pm)";
-            horarios[2] = "M (6 pm - 9 pm)";
-            horarios[3] = "J (2 pm - 5 pm)";
-            horarios[4] = "V (6 pm - 9 pm)";
-            
+            horarios[0] = "L (3 pm - 6 pm)";
+            horarios[1] = "K (12 md - 3 pm)";
+            horarios[2] = "M (2 pm - 5 pm)";
+            horarios[3] = "J (1 pm - 3 pm)";
+            horarios[4] = "V (4 pm - 7 pm)";
         }
 
         if (tipoHorario.equals("Nocturno")) {
-            horarios[0] = "L (10 pm - 12 mn)";
-            horarios[1] = "K (11 pm - 2 am)";
-            horarios[2] = "M (10 pm - 1 am)";
-            horarios[3] = "J (11 pm - 2 am)";
-            horarios[4] = "V (10 pm - 1 am)";
-        }
-        //idea implementar pila
-        for(int x=0;x<5;x++){
-            
+            horarios[0] = "L (7 pm - 9 pm)";
+            horarios[1] = "K (10 pm - 12 mn)";
+            horarios[2] = "M (8 pm - 10 pm)";
+            horarios[3] = "J (9 pm - 11 mn)";
+            horarios[4] = "V (7 pm - 9 pm)";
         }
         return horarios;
 
     }
-
     /**
      * @param args the command line arguments
      */
@@ -316,21 +286,20 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCurso3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCurso3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCurso3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCurso3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroMatriculas().setVisible(true);
+                new RegistroCurso3().setVisible(true);
             }
         });
     }
@@ -349,7 +318,6 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPanel panelRojo;
     private javax.swing.JTable tblRegistro;
     private javax.swing.JTextField txtApM;
     private javax.swing.JTextField txtApP;
