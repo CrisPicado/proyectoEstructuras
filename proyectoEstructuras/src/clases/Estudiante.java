@@ -9,8 +9,8 @@ package clases;
  *
  * @author Cris Picado
  */
-public class Estudiantes {
-    
+public class Estudiante {
+
     private String numCedula;
     private String nombre;
     private String apePaterno;
@@ -19,17 +19,16 @@ public class Estudiantes {
     private String mail;
     private String tipoHorario;
     private String Horario;
-    
-    
-    public Estudiantes(){
-        this.numCedula="";
-        this.nombre="";
-        this.apeMaterno="";
-        this.apePaterno="";
-        this.contacto=0;
-        this.mail="";
-        this.tipoHorario="";
-        this.Horario="";
+
+    public Estudiante() {
+        this.numCedula = "";
+        this.nombre = "";
+        this.apeMaterno = "";
+        this.apePaterno = "";
+        this.contacto = 0;
+        this.mail = "";
+        this.tipoHorario = "";
+        this.Horario = "";
     }
 
     /**
@@ -143,8 +142,5 @@ public class Estudiantes {
     public void setTipoHorario(String tipoHorario) {
         this.tipoHorario = tipoHorario;
     }
-    
-    
-    
-    
+
 }

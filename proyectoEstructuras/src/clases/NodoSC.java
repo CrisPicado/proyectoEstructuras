@@ -9,22 +9,13 @@ package clases;
  *
  * @author Cris Picado
  */
-public class NodoLD {
+public class NodoSC {
 
     private Estudiante elemento;
-    private NodoLD siguiente;
-    private NodoLD anterior;
+    private NodoSC siguiente;
 
-    public NodoLD() {
+    public NodoSC() {
         this.siguiente = null;
-        this.anterior = null;
-    }
-
-    /**
-     * @return the anterior
-     */
-    public NodoLD getAnterior() {
-        return anterior;
     }
 
     /**
@@ -37,15 +28,8 @@ public class NodoLD {
     /**
      * @return the siguiente
      */
-    public NodoLD getSiguiente() {
+    public NodoSC getSiguiente() {
         return siguiente;
-    }
-
-    /**
-     * @param anterior the anterior to set
-     */
-    public void setAnterior(NodoLD anterior) {
-        this.anterior = anterior;
     }
 
     /**
@@ -58,9 +42,8 @@ public class NodoLD {
     /**
      * @param siguiente the siguiente to set
      */
-    public void setSiguiente(NodoLD siguiente) {
+    public void setSiguiente(NodoSC siguiente) {
         this.siguiente = siguiente;
     }
-    
-    
+
 }
