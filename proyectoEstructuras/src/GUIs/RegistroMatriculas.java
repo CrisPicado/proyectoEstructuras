@@ -427,7 +427,6 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 aux = aux.getSiguiente();
             }
         }
-
     }
 
     public void capturarDatos() {
