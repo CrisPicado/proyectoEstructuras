@@ -5,6 +5,8 @@
  */
 package clases;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cris Picado
@@ -12,14 +14,14 @@ package clases;
 public class Rutinas {
 
     //Declaraciión de Nodos
-    private NodoLS inicioLS;
-    private NodoLD inicioLD;
+    public NodoLS inicioLS;
+    public NodoLD inicioLD;
 
-    private NodoSC inicioSC;
-    private NodoSC finSC;
-    
-    private NodoDC inicioDC;
-    private NodoDC finDC;
+    public NodoSC inicioSC;
+    public NodoSC finSC;
+
+    public NodoDC inicioDC;
+    public NodoDC finDC;
 
     //inicialización de nodos
     public Rutinas() {
@@ -30,70 +32,82 @@ public class Rutinas {
     }
 
     //Validar estado vacio de estructuras
-    public boolean estaLSVacia(){
-        if(inicioLS==null){
+    public boolean estaLSVacia() {
+        if (inicioLS == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public boolean estaLDVacia(){
-        if(inicioLD==null){
+
+    public boolean estaLDVacia() {
+        if (inicioLD == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public boolean estaSCVacia(){
-        if(inicioSC==null){
+
+    public boolean estaSCVacia() {
+        if (inicioSC == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public boolean estaDCVacia(){
-        if(inicioDC==null){
+
+    public boolean estaDCVacia() {
+        if (inicioDC == null) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
-    public void insertarLS(){
-        
-        for (int i = 0; i < 20; i++) {
-            Estudiante e = new Estudiante();
-            
-            NodoSC nuevo = new NodoSC();
-            nuevo.setElemento(e);
-            if (this.estaLSVacia()) {
-                inicioSC = nuevo;
-                finSC = nuevo;
-                finSC.setSiguiente(inicioSC);
-            }/*else if (e < inicioSC.getElemento()) {
-                nuevo.setSiguiente(inicioSC);
-                inicioSC = nuevo;
-                finSC.setSiguiente(inicioSC);
-            } else if (d.getNum() > finSC.getElemento()) {
-                finSC.setSiguiente(nuevo);
-                finSC = nuevo;
-                finSC.setSiguiente(inicioSC);
-            } else {
-                NodoSC aux = inicioSC;
-                while (aux.getSiguiente().getElemento().getNum() < d.getNum()) {
-                    aux = aux.getSiguiente();
-                }
-                nuevo.setSiguiente(aux.getSiguiente());
-                aux.setSiguiente(nuevo);
-                finSC.setSiguiente(inicioSC);
+
+    public void insertarLS(String ced, String nom, String apePA, String apeMa, int contacto, String tipoHorario, String horario) {//"No. Cédula","Nombre","Apellido Paterno","Apellido Materno","Contacto","Tipo Horario","Horario"
+        Estudiante e = new Estudiante();
+        e.setNumCedula(ced);
+        e.setNombre(nom);
+        e.setApePaterno(apePA);
+        e.setApeMaterno(apeMa);
+        e.setContacto(contacto);
+        e.setHorario(horario);
+        e.setTipoHorario(tipoHorario);
+        NodoLS nuevo = new NodoLS();
+        nuevo.setElemento(e);
+        if (this.estaLSVacia()) {
+            inicioLS = nuevo;
+        } else if (Integer.parseInt(e.getNumCedula()) < Integer.parseInt(inicioLS.getElemento().getNumCedula())) {
+            nuevo.setSiguiente(inicioLS);
+            inicioLS = nuevo;
+        } else if (inicioLS.getSiguiente()==null) {
+            inicioLS.setSiguiente(nuevo);
+        } else {
+            NodoLS aux = inicioLS;
+            while (Integer.parseInt(aux.getSiguiente().getElemento().getNumCedula()) < Integer.parseInt(e.getNumCedula())) {
+                aux = aux.getSiguiente();
             }
+            nuevo.setSiguiente(aux.getSiguiente());
+            aux.setSiguiente(nuevo);
         }
-        JOptionPane.showMessageDialog(null, "Se llenó la lista simple circular!");
-    */
+
+        JOptionPane.showMessageDialog(null,"Estudiante"+e.getNumCedula()+" - "+e.getNombre()+" "+e.getApePaterno()+" "+e.getApeMaterno()+" ha sido agregado a la lista!");
+        
+    }
+
+     public void mostrarLS() {
+        NodoLS actual = inicioLS;
+        String str = "";
+        if (!this.estaLSVacia()) {
+            while (actual != null) {
+                str += actual.getElemento().getNumCedula()+" "+actual.getElemento().getNombre()+" "+actual.getElemento().getApePaterno()+" "+actual.getElemento().getApeMaterno() +"<---\n";
+                actual = actual.getSiguiente();
+            }
+            JOptionPane.showMessageDialog(null, "La lista contiene el doble de todos los numeros de la lista Circular Simple: \n" + str, "Contenido de la lista", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
-    }
+    
 }
