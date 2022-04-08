@@ -102,7 +102,7 @@ public class Rutinas {
             inicioLS.setSiguiente(nuevo);
         } else {
             NodoLS aux = inicioLS;
-            while (Integer.valueOf(aux.getSiguiente().getElemento().getNumCedula()) < Integer.valueOf(e.getNumCedula())) {
+            while((aux.getSiguiente()!=null)&&(aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula())) < 0){          
                 aux = aux.getSiguiente();
             }
             nuevo.setSiguiente(aux.getSiguiente());

@@ -22,7 +22,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
     String[] datos = new String[8];
 
-    private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto,correo;
+    private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;
 
     /**
      * Creates new form RegistroEstudiantes
@@ -77,6 +77,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         txtCorreo = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtCorreo1 = new javax.swing.JTextField();
+        txtLimpiarTbl = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,6 +219,13 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         txtCorreo1.setMinimumSize(new java.awt.Dimension(7, 29));
         txtCorreo1.setPreferredSize(new java.awt.Dimension(7, 29));
 
+        txtLimpiarTbl.setText("Limpiar tabla");
+        txtLimpiarTbl.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLimpiarTblActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRojoLayout = new javax.swing.GroupLayout(panelRojo);
         panelRojo.setLayout(panelRojoLayout);
         panelRojoLayout.setHorizontalGroup(
@@ -279,7 +287,9 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                             .addContainerGap()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelRojoLayout.createSequentialGroup()
-                        .addGap(306, 306, 306)
+                        .addGap(14, 14, 14)
+                        .addComponent(txtLimpiarTbl)
+                        .addGap(235, 235, 235)
                         .addComponent(jButton1)
                         .addGap(128, 128, 128)
                         .addComponent(jButton2)))
@@ -341,7 +351,8 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(txtLimpiarTbl))
                 .addGap(30, 30, 30))
         );
 
@@ -394,6 +405,12 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void txtLimpiarTblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimpiarTblActionPerformed
+        // TODO add your handling code here:
+        modelo = new DefaultTableModel(null, titulos);
+        tblRegistro.setModel(modelo);
+    }//GEN-LAST:event_txtLimpiarTblActionPerformed
+
     public String[] getHorariosEspa(String tipoHorario) {
 
         String[] horarios = new String[5];
@@ -435,6 +452,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         if (!Rutinas.estaLSVacia()) {
 
             while (aux != null) {
+
                 try {
                     cedula = aux.getElemento().getNumCedula();
                     nombre = aux.getElemento().getNombre();
@@ -452,6 +470,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 } catch (Exception e) {
                     System.out.println("Error: Revisar" + e);
                 }
+
             }
         }
     }
@@ -472,10 +491,10 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error en ingreso de datos de formulario, revisar: " + e);
         }
-       
+
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         txtCed.setText("");
         txtNom.setText("");
         txtApP.setText("");
@@ -485,13 +504,14 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         cbxTH.setSelectedIndex(0);
         cbxHorarios.setSelectedIndex(0);
         cedula = null;
-        nombre=null;
-        apePa=null;
-        apeMa=null;
-        contacto=null;
-        correo=null;
-        tipoHorario=null;
-        horarioDisponible=null;
+        nombre = null;
+        apePa = null;
+        apeMa = null;
+        contacto = null;
+        correo = null;
+        tipoHorario = null;
+        horarioDisponible = null;
+
     }
 
     /**
@@ -562,6 +582,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtContacto;
     private javax.swing.JLabel txtCorreo;
     private javax.swing.JTextField txtCorreo1;
+    private javax.swing.JButton txtLimpiarTbl;
     private javax.swing.JTextField txtNom;
     // End of variables declaration//GEN-END:variables
 }
