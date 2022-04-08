@@ -7,6 +7,9 @@ package GUIs;
 
 import java.awt.event.ItemEvent;
 import javax.swing.DefaultComboBoxModel;
+import clases.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,11 +17,24 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class RegistroCurso2 extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
+    String[] datos = new String[8];
+
+    private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;
+
     /**
      * Creates new form RegistroCurso2
      */
     public RegistroCurso2() {
         initComponents();
+        setLocationRelativeTo(null);
+        setResizable(false);
+        setTitle("Registro Matricula - Curso Estudios sociales");
+        ImageIcon IconoForm = new ImageIcon("src/imgs/icons8_globe_earth_46px.png");
+        this.setIconImage(IconoForm.getImage());
+        modelo = new DefaultTableModel(null, titulos);
+        tblRegistro.setModel(modelo);
     }
 
     /**
@@ -33,10 +49,8 @@ public class RegistroCurso2 extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtCed = new javax.swing.JTextField();
         txtNom = new javax.swing.JTextField();
         txtApP = new javax.swing.JTextField();
-        txtContacto = new javax.swing.JTextField();
         txtApM = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -58,7 +72,11 @@ public class RegistroCurso2 extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
+        txtCed = new javax.swing.JFormattedTextField();
+        txtContacto = new javax.swing.JFormattedTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,13 +107,9 @@ public class RegistroCurso2 extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        txtCed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
         txtNom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
         txtApP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
-        txtContacto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
         txtApM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
@@ -172,6 +186,34 @@ public class RegistroCurso2 extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Correo Electrónico:");
 
+        txtCed.setBorder(null);
+        try {
+            txtCed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtCed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
+        try {
+            txtContacto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Mostrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -191,25 +233,20 @@ public class RegistroCurso2 extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addComponent(jLabel12))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(35, 35, 35)
-                                .addComponent(txtApM))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtCed, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtApM)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(0, 0, Short.MAX_VALUE)
+                                    .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCed)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -219,47 +256,49 @@ public class RegistroCurso2 extends javax.swing.JFrame {
                                     .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel8))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(jLabel17)))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel17))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6)
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                    .addComponent(txtContacto))
-                                .addGap(92, 92, 92)))
+                                .addGap(18, 18, 18)
+                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(156, 156, 156)))
                         .addGap(24, 24, 24))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(128, 128, 128)
+                .addComponent(jButton2)
+                .addGap(353, 353, 353))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtCed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCed))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                             .addComponent(jLabel17)
-                            .addComponent(jTextField1))
+                            .addComponent(txtCorreo))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(36, 36, 36)
@@ -274,8 +313,7 @@ public class RegistroCurso2 extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,7 +335,11 @@ public class RegistroCurso2 extends javax.swing.JFrame {
                         .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(96, 96, 96)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(31, 31, 31))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
@@ -309,11 +351,11 @@ public class RegistroCurso2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
 
-            if(this.cbxTH.getSelectedIndex()> 0){
+            if (this.cbxTH.getSelectedIndex() > 0) {
 
                 this.cbxHorarios.setModel(new DefaultComboBoxModel(this.getHorarioCurso2(this.cbxTH.getSelectedItem().toString())));
 
-            }else if(this.cbxTH.getSelectedIndex()== 0){
+            } else if (this.cbxTH.getSelectedIndex() == 0) {
                 String[] opcion = new String[1];
                 opcion[0] = "  -Horarios Disponibles-";
                 this.cbxHorarios.setModel(new DefaultComboBoxModel(opcion));
@@ -322,36 +364,17 @@ public class RegistroCurso2 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbxTHItemStateChanged
 
-    public String[] getHorarioCurso2(String tipoHorario) {
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        capturarDatos();
+        Rutinas.insertarLD(cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-        String[] horarios = new String[5];
-        
-        if (tipoHorario.equals("Matutino")) {
-            horarios[0] = "L (8 am - 11 am)";
-            horarios[1] = "K (6 am - 9 am)";
-            horarios[2] = "M (7 am - 10 am)";
-            horarios[3] = "J (6 am - 9 am)";
-            horarios[4] = "V (7 am - 10 am)";
-        }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        mostrarLDtbl();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-        if (tipoHorario.equals("Vespertino")) {
-            horarios[0] = "L (3 pm - 6 pm)";
-            horarios[1] = "K (2 pm - 5 pm)";
-            horarios[2] = "M (1 pm - 3 pm)";
-            horarios[3] = "J (3 pm - 6 pm)";
-            horarios[4] = "V (4 pm - 7 pm)";
-        }
-
-        if (tipoHorario.equals("Nocturno")) {
-            horarios[0] = "L (7 pm - 10 pm)";
-            horarios[1] = "K (10 pm - 12 mn)";
-            horarios[2] = "M (8 pm - 11 pm)";
-            horarios[3] = "J (10 pm - 12 mn)";
-            horarios[4] = "V (7 pm - 10 pm)";
-        }
-        return horarios;
-
-    }
     /**
      * @param args the command line arguments
      */
@@ -387,9 +410,105 @@ public class RegistroCurso2 extends javax.swing.JFrame {
         });
     }
 
+    public String[] getHorarioCurso2(String tipoHorario) {
+
+        String[] horarios = new String[5];
+
+        if (tipoHorario.equals("Matutino")) {
+            horarios[0] = "L (8 am - 11 am)";
+            horarios[1] = "K (6 am - 9 am)";
+            horarios[2] = "M (7 am - 10 am)";
+            horarios[3] = "J (6 am - 9 am)";
+            horarios[4] = "V (7 am - 10 am)";
+        }
+
+        if (tipoHorario.equals("Vespertino")) {
+            horarios[0] = "L (3 pm - 6 pm)";
+            horarios[1] = "K (2 pm - 5 pm)";
+            horarios[2] = "M (1 pm - 3 pm)";
+            horarios[3] = "J (3 pm - 6 pm)";
+            horarios[4] = "V (4 pm - 7 pm)";
+        }
+
+        if (tipoHorario.equals("Nocturno")) {
+            horarios[0] = "L (7 pm - 10 pm)";
+            horarios[1] = "K (10 pm - 12 mn)";
+            horarios[2] = "M (8 pm - 11 pm)";
+            horarios[3] = "J (10 pm - 12 mn)";
+            horarios[4] = "V (7 pm - 10 pm)";
+        }
+        return horarios;
+
+    }
+
+    public void capturarDatos() {
+        try {
+            cedula = txtCed.getText();
+            nombre = txtNom.getText();
+            apePa = txtApP.getText();
+            apeMa = txtApM.getText();
+            contacto = txtContacto.getText();
+            correo = txtCorreo.getText();
+            tipoHorario = cbxTH.getSelectedItem().toString();
+            horarioDisponible = cbxHorarios.getSelectedItem().toString();
+
+        } catch (Exception e) {
+            System.out.println("Error en ingreso de datos de formulario, revisar: " + e);
+        }
+    }
+
+    public void limpiar() {
+        txtCed.setText("");
+        txtNom.setText("");
+        txtApP.setText("");
+        txtApM.setText("");
+        txtContacto.setText("");
+        txtCorreo.setText("");
+        cbxTH.setSelectedIndex(0);
+        cbxHorarios.setSelectedIndex(0);
+        cedula = null;
+        nombre = null;
+        apePa = null;
+        apeMa = null;
+        contacto = null;
+        correo = null;
+        tipoHorario = null;
+        horarioDisponible = null;
+    }
+
+    public void mostrarLDtbl() {
+        NodoLD aux = Rutinas.inicioLD;
+
+        if (!Rutinas.estaLDVacia()) {
+            while (aux != null) {
+
+                try {
+                    cedula = aux.getElemento().getNumCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apePa = aux.getElemento().getApePaterno();
+                    apeMa = aux.getElemento().getApeMaterno();
+                    contacto = aux.getElemento().getContacto();
+                    correo = aux.getElemento().getCorreo();
+                    tipoHorario = aux.getElemento().getTipoHorario();
+                    horarioDisponible = aux.getElemento().getHorario();
+
+                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+                    modelo.addRow(fila);
+
+                    aux = aux.getSiguiente();
+                } catch (Exception e) {
+                    System.out.println("Error: Revisar metodo mostrarLD" + e);
+                }
+            }
+        }
+
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxHorarios;
     private javax.swing.JComboBox<String> cbxTH;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -410,12 +529,12 @@ public class RegistroCurso2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblRegistro;
     private javax.swing.JTextField txtApM;
     private javax.swing.JTextField txtApP;
-    private javax.swing.JTextField txtCed;
-    private javax.swing.JTextField txtContacto;
+    private javax.swing.JFormattedTextField txtCed;
+    private javax.swing.JFormattedTextField txtContacto;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNom;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,7 +15,8 @@ public class Estudiante {
     private String nombre;
     private String apePaterno;
     private String apeMaterno;
-    private int contacto;
+    private String contacto;
+    private String correo;
     private String mail;
     private String tipoHorario;
     private String Horario;
@@ -25,7 +26,7 @@ public class Estudiante {
         this.nombre = "";
         this.apeMaterno = "";
         this.apePaterno = "";
-        this.contacto = 0;
+        this.contacto = "";
         this.mail = "";
         this.tipoHorario = "";
         this.Horario = "";
@@ -48,7 +49,7 @@ public class Estudiante {
     /**
      * @return the contacto
      */
-    public int getContacto() {
+    public String getContacto() {
         return contacto;
     }
 
@@ -104,7 +105,7 @@ public class Estudiante {
     /**
      * @param contacto the contacto to set
      */
-    public void setContacto(int contacto) {
+    public void setContacto(String contacto) {
         this.contacto = contacto;
     }
 
@@ -141,6 +142,20 @@ public class Estudiante {
      */
     public void setTipoHorario(String tipoHorario) {
         this.tipoHorario = tipoHorario;
+    }
+
+    /**
+     * @return the correo
+     */
+    public String getCorreo() {
+        return correo;
+    }
+
+    /**
+     * @param correo the correo to set
+     */
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
 }

@@ -12,22 +12,17 @@ import javax.swing.table.TableColumn;
 import clases.*;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Cris Picado
  */
 public class RegistroMatriculas extends javax.swing.JFrame {
 
-    Rutinas r = new Rutinas();
-    public NodoLS inicioLS;
-
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Tipo Horario", "Horario"};
-    String[] datos = new String[7];
+    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
+    String[] datos = new String[8];
 
-    private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible;
-    private int contacto;
+    private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto,correo;
 
     /**
      * Creates new form RegistroEstudiantes
@@ -36,7 +31,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Registro Matricula Curso1");
+        setTitle("Registro Matricula Matemáticas");
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
     }
@@ -59,10 +54,8 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtCed = new javax.swing.JTextField();
         txtNom = new javax.swing.JTextField();
         txtApP = new javax.swing.JTextField();
-        txtContacto = new javax.swing.JTextField();
         txtApM = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRegistro = new javax.swing.JTable();
@@ -79,6 +72,11 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        txtCed = new javax.swing.JFormattedTextField();
+        txtContacto = new javax.swing.JFormattedTextField();
+        txtCorreo = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtCorreo1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -129,13 +127,9 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Número de contacto:");
 
-        txtCed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
         txtNom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
         txtApP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-
-        txtContacto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
         txtApM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
 
@@ -174,7 +168,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_male_user_24px.png"))); // NOI18N
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_rename_26px.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_male_user_24px.png"))); // NOI18N
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_rename_26px.png"))); // NOI18N
 
@@ -200,6 +194,30 @@ public class RegistroMatriculas extends javax.swing.JFrame {
             }
         });
 
+        txtCed.setBorder(null);
+        try {
+            txtCed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        txtCed.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
+        try {
+            txtContacto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        txtCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setText("Correo Electrónico:");
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_mail_26px.png"))); // NOI18N
+
+        txtCorreo1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtCorreo1.setMinimumSize(new java.awt.Dimension(7, 29));
+        txtCorreo1.setPreferredSize(new java.awt.Dimension(7, 29));
+
         javax.swing.GroupLayout panelRojoLayout = new javax.swing.GroupLayout(panelRojo);
         panelRojo.setLayout(panelRojoLayout);
         panelRojoLayout.setHorizontalGroup(
@@ -220,38 +238,41 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(panelRojoLayout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(txtApM))
-                                .addGroup(panelRojoLayout.createSequentialGroup()
-                                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(jLabel3)
-                                        .addComponent(jLabel4))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtCed, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGap(59, 59, 59)
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addGap(18, 18, 18)
+                            .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtApM)
+                                .addComponent(txtApP, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(txtNom, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                .addComponent(txtCed))
+                            .addGap(59, 59, 59)
+                            .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel14)
+                                .addComponent(jLabel16))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(panelRojoLayout.createSequentialGroup()
+                            .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRojoLayout.createSequentialGroup()
                                     .addComponent(jLabel6)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(panelRojoLayout.createSequentialGroup()
                                     .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel8))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRojoLayout.createSequentialGroup()
+                                            .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel8))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                        .addGroup(panelRojoLayout.createSequentialGroup()
+                                            .addComponent(txtCorreo)
+                                            .addGap(25, 25, 25)))
+                                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGroup(panelRojoLayout.createSequentialGroup()
@@ -270,31 +291,40 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel6)
+                        .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRojoLayout.createSequentialGroup()
                         .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel2)
                                 .addComponent(txtCed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(29, 29, 29)
                         .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel3)
-                                .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                                .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCorreo)
+                                .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(24, 24, 24)
+                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRojoLayout.createSequentialGroup()
                         .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel4)
                                 .addComponent(txtApP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelRojoLayout.createSequentialGroup()
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(29, 29, 29)
                         .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel6))
-                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
+                                .addComponent(jLabel5)
+                                .addComponent(txtApM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelRojoLayout.createSequentialGroup()
                         .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel7)
@@ -306,13 +336,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                             .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel8)))))
-                .addGap(26, 26, 26)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(txtApM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -360,13 +384,14 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         capturarDatos();
-        r.insertarLS(cedula, nombre, apePa, apeMa, contacto, tipoHorario, horarioDisponible);
+        Rutinas.insertarLS(cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible);
+        limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        System.out.println("hola");
         mostrarLSTbl();
+        limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public String[] getHorariosEspa(String tipoHorario) {
@@ -406,41 +431,69 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     }
 
     public void mostrarLSTbl() {
-        NodoLS aux = r.inicioLS;
-        int num = 0;
-        if (!r.estaLSVacia()) {
+        NodoLS aux = Rutinas.inicioLS;
+        if (!Rutinas.estaLSVacia()) {
 
             while (aux != null) {
-                cedula = aux.getElemento().getNumCedula();
-                nombre = aux.getElemento().getNombre();
-                apePa = aux.getElemento().getApePaterno();
-                apeMa = aux.getElemento().getApeMaterno();
-                contacto = aux.getElemento().getContacto();
-                tipoHorario = aux.getElemento().getTipoHorario();
-                horarioDisponible = aux.getElemento().getTipoHorario();
-                
-                num++;
-                
-                Object[] fila={cedula, nombre, apePa, apeMa, contacto, tipoHorario, horarioDisponible};
-                modelo.addRow(fila);
-                
-                aux = aux.getSiguiente();
+                try {
+                    cedula = aux.getElemento().getNumCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apePa = aux.getElemento().getApePaterno();
+                    apeMa = aux.getElemento().getApeMaterno();
+                    contacto = aux.getElemento().getContacto();
+                    correo = aux.getElemento().getContacto();
+                    tipoHorario = aux.getElemento().getTipoHorario();
+                    horarioDisponible = aux.getElemento().getHorario();
+
+                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+                    modelo.addRow(fila);
+
+                    aux = aux.getSiguiente();
+                } catch (Exception e) {
+                    System.out.println("Error: Revisar" + e);
+                }
             }
         }
     }
 
     public void capturarDatos() {
+        try {
+            if (Validaciones.validarCedula(txtCed.getText()) == true) {
+                cedula = txtCed.getText();
+                nombre = txtNom.getText();
+                apePa = txtApP.getText();
+                apeMa = txtApM.getText();
+                contacto = txtContacto.getText();
+                correo = txtCorreo.getText();
+                tipoHorario = cbxTH.getSelectedItem().toString();
+                horarioDisponible = cbxHorarios.getSelectedItem().toString();
+            }
 
-        cedula = txtCed.getText();
-        nombre = txtNom.getText();
-        apePa = txtApP.getText();
-        apeMa = txtApM.getText();
-        contacto = Integer.parseInt(txtContacto.getText());
-        tipoHorario = cbxTH.getSelectedItem().toString();
-        horarioDisponible = cbxHorarios.getSelectedItem().toString();
+        } catch (Exception e) {
+            System.out.println("Error en ingreso de datos de formulario, revisar: " + e);
+        }
+       
+    }
+    
+    public void limpiar(){
+        txtCed.setText("");
+        txtNom.setText("");
+        txtApP.setText("");
+        txtApM.setText("");
+        txtContacto.setText("");
+        txtCorreo1.setText("");
+        cbxTH.setSelectedIndex(0);
+        cbxHorarios.setSelectedIndex(0);
+        cedula = null;
+        nombre=null;
+        apePa=null;
+        apeMa=null;
+        contacto=null;
+        correo=null;
+        tipoHorario=null;
+        horarioDisponible=null;
     }
 
-    
     /**
      * @param args the command line arguments
      */
@@ -489,6 +542,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -504,8 +558,10 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private javax.swing.JTable tblRegistro;
     private javax.swing.JTextField txtApM;
     private javax.swing.JTextField txtApP;
-    private javax.swing.JTextField txtCed;
-    private javax.swing.JTextField txtContacto;
+    private javax.swing.JFormattedTextField txtCed;
+    private javax.swing.JFormattedTextField txtContacto;
+    private javax.swing.JLabel txtCorreo;
+    private javax.swing.JTextField txtCorreo1;
     private javax.swing.JTextField txtNom;
     // End of variables declaration//GEN-END:variables
 }

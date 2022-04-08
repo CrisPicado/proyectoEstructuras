@@ -6,7 +6,7 @@ public class Profesores {
     private String nombre;
     private String apellidoP;
     private String apellidoM;
-    private int telefono;
+    private String telefono;
     private String correo;
     private String asignatura;
 
@@ -15,7 +15,7 @@ public class Profesores {
         this.nombre = "";
         this.apellidoP = "";
         this.apellidoM = "";
-        this.telefono = 0;
+        this.telefono = "";
         this.correo = "";
         this.asignatura = "";
     }
@@ -52,11 +52,11 @@ public class Profesores {
         this.apellidoM = apellidoM;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
