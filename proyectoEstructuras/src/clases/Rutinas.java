@@ -102,7 +102,7 @@ public class Rutinas {
             inicioLS.setSiguiente(nuevo);
         } else {
             NodoLS aux = inicioLS;
-            while((aux.getSiguiente()!=null)&&(aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula())) < 0){          
+            while ((aux.getSiguiente() != null) && (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula())) < 0) {
                 aux = aux.getSiguiente();
             }
             nuevo.setSiguiente(aux.getSiguiente());
@@ -140,14 +140,14 @@ public class Rutinas {
         nuevo.setElemento(r);
         if (vaciaLSP()) {
             inicioLSP = nuevo;
-        } else if (Integer.parseInt(r.getCedula()) < Integer.parseInt(inicioLSP.getElemento().getCedula())) {
+        } else if (r.getCedula().compareTo(inicioLSP.getElemento().getCedula()) < 0) {
             nuevo.setSiguiente(inicioLSP);
             inicioLSP = nuevo;
         } else if (inicioLSP.getSiguiente() == null) {
             inicioLSP.setSiguiente(nuevo);
         } else {
             NodoProfLS aux = inicioLSP;
-            while (Integer.parseInt(aux.getSiguiente().getElemento().getCedula()) < Integer.parseInt(r.getCedula())) {
+            while ((aux.getSiguiente() != null) && (aux.getSiguiente().getElemento().getCedula().compareTo(r.getCedula()) < 0)) {
                 aux = aux.getSiguiente();
             }
             nuevo.setSiguiente(aux.getSiguiente());
@@ -189,7 +189,7 @@ public class Rutinas {
             finLD = nuevo;
         } else if (Integer.parseInt(e.getNumCedula()) < Integer.parseInt(inicioLD.getElemento().getNumCedula())) {
             inicioLD.setAnterior(nuevo);
-            nuevo.setSiguiente(inicioLD); 
+            nuevo.setSiguiente(inicioLD);
             inicioLD = nuevo;
             inicioLD.setAnterior(finLD);
         } else if (Integer.parseInt(e.getNumCedula()) > Integer.parseInt(finLD.getElemento().getNumCedula())) {
