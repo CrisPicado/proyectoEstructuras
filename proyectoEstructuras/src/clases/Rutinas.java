@@ -15,6 +15,7 @@ public class Rutinas {
 
     //Declaración de Nodos
     public static NodoLS inicioLS;
+    public static NodoLS finLS;
 
     public static NodoLD inicioLD;
     public static NodoLD finLD;
@@ -28,9 +29,12 @@ public class Rutinas {
     public static NodoProfLS inicioLSP;
     public static NodoProfLS finLSP;
 
+    public static NodoP cima;
+
     //inicialización de nodos
     public Rutinas() {
         this.inicioLS = null;
+        this.finLS = null;
         this.inicioLD = null;
         this.finLD = null;
         this.inicioSC = null;
@@ -38,6 +42,7 @@ public class Rutinas {
         this.inicioDC = null;
         this.finDC = null;
         this.inicioLSP = null;
+        this.cima = null;
     }
 
     //Validar estado vacio de estructuras
@@ -75,6 +80,14 @@ public class Rutinas {
 
     public static boolean vaciaLSP() {
         if (inicioLSP == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaPilaVacia() {
+        if (cima == null) {
             return true;
         } else {
             return false;
@@ -124,6 +137,41 @@ public class Rutinas {
             JOptionPane.showMessageDialog(null, "La lista contiene el doble de todos los numeros de la lista simple: \n" + str, "Contenido de la lista", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public static void eliminarRegistroLS(String cedula) {
+        boolean encontrado = false;
+        NodoLS aux = inicioLS;
+        NodoLS anterior = null;
+
+        if (!Rutinas.estaLSVacia()) {
+
+            while (aux != null && encontrado != true) {
+
+                if (aux.getElemento().getNumCedula().equals(cedula) ) {
+
+                    if (aux == inicioLS) {
+                        inicioLS = inicioLS.getSiguiente();
+                    } else if (aux == finLS) {
+                        anterior.setSiguiente(null);
+                        finLS = anterior;
+                    } else {
+                        anterior.setSiguiente(aux.getSiguiente());
+                    }
+                    JOptionPane.showMessageDialog(null, "Datos eliminados correctamente");
+                    encontrado = true;
+                    
+
+                }
+                anterior = aux;
+                aux = aux.getSiguiente();
+            }
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(null, "Dato no encontrado , vehiculo consultado no existe");
+            }
+        } else {
+            JOptionPane.showInputDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -212,18 +260,34 @@ public class Rutinas {
 
     }
 
-    public void mostrarLD() {
-        String str = "";
-        NodoLD aux = inicioLD;
-
-        if (!Rutinas.estaLDVacia()) {
-            while (aux != inicioLD) {
-                str += aux.getElemento().getNumCedula() + " " + aux.getElemento().getNombre() + " " + aux.getElemento().getApePaterno() + " " + aux.getElemento().getApeMaterno() + "<---\n";
-                aux = aux.getSiguiente();
-            }
-            JOptionPane.showMessageDialog(null, "Estudiantes: \n" + str, "Contenido de la lista", JOptionPane.INFORMATION_MESSAGE);
+    public static void llenarPila(String horario) {
+        Dato d = new Dato();
+        d.setHorario(horario);
+        NodoP nuevo = new NodoP();
+        nuevo.setElemento(d);
+        if (Rutinas.estaPilaVacia()) {
+            cima = nuevo;
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+            nuevo.setSiguiente(cima);
+            cima = nuevo;
+        }
+        System.out.println("elemento apilado");
+    }
+
+    public static void mostrarPila() {
+
+        String s = "";
+
+        NodoP actual = cima;
+
+        if (!estaPilaVacia()) {
+
+            while (actual != null) {
+                s += actual.getElemento().getHorario() + "<--\n";
+                actual = actual.getSiguiente();
+            }
+            JOptionPane.showMessageDialog(null, "La pila contiene: \n\n" + s,
+                    "Mostrar Pila", JOptionPane.PLAIN_MESSAGE);
         }
 
     }

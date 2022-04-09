@@ -5,6 +5,10 @@
  */
 package clases;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Cris Picado
@@ -35,7 +39,33 @@ public class Validaciones {
         return false;
     }
     
+    public static String formatoCedula(String cedula){
+        
+        String seg1 = cedula.substring(0,1);
+        String seg2 = cedula.substring(1,5);
+        String seg3 = cedula.substring(5,9);
+        
+        return seg1+"-"+seg2+"-"+seg3;
+  
+    }
     
-    
+    public static void validarCorreo(String correo){
+        //cpicado869@gmail.com
+        // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+ 
+        // El email a validar
+        String pCorreo = correo;
+ 
+        Matcher mather = pattern.matcher(pCorreo);
+ 
+        if (mather.find() == true) {
+            System.out.println("El email ingresado es válido.");
+        } else {
+            System.out.println("El email ingresado es inválido.");
+        }
+    }
 
 }
