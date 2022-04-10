@@ -83,6 +83,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         btnCln = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -245,6 +246,13 @@ public class RegistroMatriculas extends javax.swing.JFrame {
             }
         });
 
+        btnEdit.setText("Editar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRojoLayout = new javax.swing.GroupLayout(panelRojo);
         panelRojo.setLayout(panelRojoLayout);
         panelRojoLayout.setHorizontalGroup(
@@ -310,9 +318,11 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 .addComponent(btnCln)
                 .addGap(103, 103, 103)
                 .addComponent(btnGuardar)
-                .addGap(185, 185, 185)
+                .addGap(107, 107, 107)
                 .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnEdit)
+                .addGap(103, 103, 103)
                 .addComponent(btnEliminar)
                 .addGap(145, 145, 145)
                 .addComponent(btnMostrar)
@@ -377,7 +387,8 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                     .addComponent(btnMostrar)
                     .addComponent(btnCln)
                     .addComponent(btnBuscar)
-                    .addComponent(btnEliminar))
+                    .addComponent(btnEliminar)
+                    .addComponent(btnEdit))
                 .addGap(30, 30, 30))
         );
 
@@ -426,8 +437,10 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         // TODO add your handling code here:
-        mostrarLSTbl();
+        ListadoEstudiantesM abrir = new ListadoEstudiantesM();
+        abrir.setVisible(true);
         limpiar();
+        this.dispose();
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnClnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClnActionPerformed
@@ -450,6 +463,13 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         Rutinas.eliminarRegistroLS(Validaciones.formatoCedula(cedula2));
 
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        capturarDatos();
+        Rutinas.editarRegistroLS(cedula, nombre, apePa, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
+        mostrarLSTbl();
+    }//GEN-LAST:event_btnEditActionPerformed
 
     public String[] getHorariosEspa(String tipoHorario) {
 
@@ -488,7 +508,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
     }
 
-    public void mostrarLSTbl() {
+    public  void mostrarLSTbl() {
         NodoLS aux = Rutinas.inicioLS;
         if (!Rutinas.estaLSVacia()) {
 
@@ -523,7 +543,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         NodoLS aux = inicioLS;
         boolean encontrado = false;
 
-        if (!Rutinas.estaPilaVacia()) {
+        if (!Rutinas.estaLSVacia()) {
 
             while (aux != null && encontrado != true) {
 
@@ -533,9 +553,18 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                     apePa = aux.getElemento().getApePaterno();
                     apeMa = aux.getElemento().getApeMaterno();
                     contacto = aux.getElemento().getContacto();
-                    correo = aux.getElemento().getContacto();
+                    correo = aux.getElemento().getCorreo();
                     tipoHorario = aux.getElemento().getTipoHorario();
                     horarioDisponible = aux.getElemento().getHorario();
+
+                    txtCed.setText(cedula);
+                    txtNom.setText(nombre);
+                    txtApP.setText(apePa);
+                    txtApM.setText(apeMa);
+                    txtContacto.setText(contacto);
+                    txtCorreo1.setText(correo);
+                    cbxTH.setSelectedItem(tipoHorario);
+                    cbxHorarios.setSelectedItem(horarioDisponible);
 
                     Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
                     modelo.addRow(fila);
@@ -550,37 +579,23 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
     }
 
-    private void validarCorreo(){
-        // Patrón para validar el email
-        Pattern pattern = Pattern
-                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
- 
-        // El email a validar
-        String pCorreo = txtCorreo1.getText();
- 
-        Matcher mather = pattern.matcher(pCorreo);
- 
-        if (mather.find() == true) {
-            System.out.println("El email ingresado es válido.");
-        } else {
-            System.out.println("El email ingresado es inválido.");
-        }
-    }
-    
-    
     public void capturarDatos() {
         try {
-            if (Validaciones.validarCedula(txtCed.getText()) == true) {
+            if (Validaciones.validarCedula(txtCed.getText()) == true && Validaciones.validarCorreo(txtCorreo1.getText()) == true) {
+
                 cedula = txtCed.getText();
                 nombre = txtNom.getText();
                 apePa = txtApP.getText();
                 apeMa = txtApM.getText();
                 contacto = txtContacto.getText();
                 correo = txtCorreo1.getText();
-                Validaciones.validarCorreo(txtCorreo1.getText());
                 tipoHorario = cbxTH.getSelectedItem().toString();
                 horarioDisponible = cbxHorarios.getSelectedItem().toString();
+
+            } else if (Validaciones.validarCedula(txtCed.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar cedula!");
+            } else if (Validaciones.validarCorreo(txtCorreo.getText()) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
             }
 
         } catch (Exception e) {
@@ -648,6 +663,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCln;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnMostrar;

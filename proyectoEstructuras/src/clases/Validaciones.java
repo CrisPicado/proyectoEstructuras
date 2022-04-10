@@ -49,7 +49,7 @@ public class Validaciones {
   
     }
     
-    public static void validarCorreo(String correo){
+    public static boolean validarCorreo(String correo){
         //cpicado869@gmail.com
         // Patrón para validar el email
         Pattern pattern = Pattern
@@ -62,9 +62,9 @@ public class Validaciones {
         Matcher mather = pattern.matcher(pCorreo);
  
         if (mather.find() == true) {
-            System.out.println("El email ingresado es válido.");
+            return true;
         } else {
-            System.out.println("El email ingresado es inválido.");
+            return false;
         }
     }
 

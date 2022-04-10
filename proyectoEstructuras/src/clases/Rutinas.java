@@ -149,7 +149,7 @@ public class Rutinas {
 
             while (aux != null && encontrado != true) {
 
-                if (aux.getElemento().getNumCedula().equals(cedula) ) {
+                if (aux.getElemento().getNumCedula().equals(cedula)) {
 
                     if (aux == inicioLS) {
                         inicioLS = inicioLS.getSiguiente();
@@ -161,7 +161,6 @@ public class Rutinas {
                     }
                     JOptionPane.showMessageDialog(null, "Datos eliminados correctamente");
                     encontrado = true;
-                    
 
                 }
                 anterior = aux;
@@ -169,6 +168,40 @@ public class Rutinas {
             }
             if (!encontrado) {
                 JOptionPane.showMessageDialog(null, "Dato no encontrado , vehiculo consultado no existe");
+            }
+        } else {
+            JOptionPane.showInputDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public static void editarRegistroLS(String cedula, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String contacto, String tipoHorario, String horarioDisponible) {
+        String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
+        boolean encontrado = false;
+        NodoLS aux = inicioLS;
+
+        if (!Rutinas.estaLSVacia()) {
+
+            while (aux != null && encontrado != true) {
+
+                if (aux.getElemento().getNumCedula().equals(pCed)) {
+
+                    if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+
+                        aux.getElemento().setNumCedula(cedula);
+                        aux.getElemento().setNombre(nombre);
+                        aux.getElemento().setApePaterno(apellidoP);
+                        aux.getElemento().setApeMaterno(apellidoM);
+                        aux.getElemento().setContacto(contacto);
+                        aux.getElemento().setCorreo(correo);
+                        aux.getElemento().setTipoHorario(tipoHorario);
+                        aux.getElemento().setHorario(horarioDisponible);
+                        encontrado = true;
+                    }
+                }
+                aux = aux.getSiguiente();
+            }
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
             }
         } else {
             JOptionPane.showInputDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
