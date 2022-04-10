@@ -84,6 +84,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnEdit = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,10 +136,25 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         jLabel6.setText("Número de contacto:");
 
         txtNom.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtNom.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNomKeyTyped(evt);
+            }
+        });
 
         txtApP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtApP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApPKeyTyped(evt);
+            }
+        });
 
         txtApM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtApM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApMKeyTyped(evt);
+            }
+        });
 
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,9 +193,9 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_male_user_24px.png"))); // NOI18N
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_rename_26px.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_male_user_24px.png"))); // NOI18N
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_rename_26px.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_male_user_24px.png"))); // NOI18N
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_schedule_26px.png"))); // NOI18N
 
@@ -201,7 +217,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
             }
         });
 
-        txtCed.setBorder(null);
+        txtCed.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         try {
             txtCed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-####-####")));
         } catch (java.text.ParseException ex) {
@@ -214,6 +230,11 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtContacto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContactoKeyTyped(evt);
+            }
+        });
 
         txtCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,6 +271,13 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_back_to_32px.png"))); // NOI18N
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
             }
         });
 
@@ -306,27 +334,29 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                                         .addComponent(txtCorreo)
                                         .addGap(25, 25, 25)))
                                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(panelRojoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelRojoLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
                 .addComponent(btnCln)
-                .addGap(103, 103, 103)
+                .addGap(80, 80, 80)
                 .addComponent(btnGuardar)
-                .addGap(107, 107, 107)
+                .addGap(111, 111, 111)
+                .addComponent(btnEdit)
+                .addGap(93, 93, 93)
                 .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnEdit)
-                .addGap(103, 103, 103)
                 .addComponent(btnEliminar)
-                .addGap(145, 145, 145)
+                .addGap(123, 123, 123)
                 .addComponent(btnMostrar)
-                .addGap(16, 16, 16))
+                .addGap(37, 37, 37))
         );
         panelRojoLayout.setVerticalGroup(
             panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,14 +411,16 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                                 .addComponent(jLabel8)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardar)
-                    .addComponent(btnMostrar)
-                    .addComponent(btnCln)
-                    .addComponent(btnBuscar)
-                    .addComponent(btnEliminar)
-                    .addComponent(btnEdit))
+                .addGap(22, 22, 22)
+                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGuardar)
+                        .addComponent(btnMostrar)
+                        .addComponent(btnBuscar)
+                        .addComponent(btnEliminar)
+                        .addComponent(btnEdit)
+                        .addComponent(btnCln))
+                    .addComponent(jLabel17))
                 .addGap(30, 30, 30))
         );
 
@@ -470,6 +502,36 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         Rutinas.editarRegistroLS(cedula, nombre, apePa, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
         mostrarLSTbl();
     }//GEN-LAST:event_btnEditActionPerformed
+
+    private void txtNomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar(); // se asigna a C el evento de obtener lo que se teclea
+        if((c < 'a' || c >'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
+    }//GEN-LAST:event_txtNomKeyTyped
+
+    private void txtApPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApPKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar(); // se asigna a C el evento de obtener lo que se teclea
+        if((c < 'a' || c >'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
+    }//GEN-LAST:event_txtApPKeyTyped
+
+    private void txtApMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApMKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar(); // se asigna a C el evento de obtener lo que se teclea
+        if((c < 'a' || c >'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
+    }//GEN-LAST:event_txtApMKeyTyped
+
+    private void txtContactoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactoKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar(); 
+        if(c<'0' || c>'9')evt.consume();//Permite ingresar unicamente valores numericos al textfield mediante el metodo consume
+    }//GEN-LAST:event_txtContactoKeyTyped
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // TODO add your handling code here:
+        r.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel17MouseClicked
 
     public String[] getHorariosEspa(String tipoHorario) {
 
@@ -677,6 +739,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
