@@ -69,7 +69,7 @@ public class RegistroProfesor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelRojo.setBackground(new java.awt.Color(118, 183, 248));
+        panelRojo.setBackground(new java.awt.Color(153, 153, 255));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 

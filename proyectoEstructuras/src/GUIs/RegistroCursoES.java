@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Cris Picado
  */
-public class RegistroCurso2 extends javax.swing.JFrame {
+public class RegistroCursoES extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
     String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
@@ -26,7 +26,7 @@ public class RegistroCurso2 extends javax.swing.JFrame {
     /**
      * Creates new form RegistroCurso2
      */
-    public RegistroCurso2() {
+    public RegistroCursoES() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
@@ -392,20 +392,21 @@ public class RegistroCurso2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroCurso2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoES.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroCurso2().setVisible(true);
+                new RegistroCursoES().setVisible(true);
             }
         });
     }
