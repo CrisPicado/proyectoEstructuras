@@ -66,10 +66,10 @@ public class RegistroProfesor extends javax.swing.JFrame {
         cbxAsignatura = new javax.swing.JComboBox<>();
         txtCedula = new javax.swing.JFormattedTextField();
         txtContacto = new javax.swing.JFormattedTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jButtonLimpiarTabla = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -179,6 +179,11 @@ public class RegistroProfesor extends javax.swing.JFrame {
 
         cbxAsignatura.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         cbxAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Selecciona Asignatura-", "Español", "Matemáticas", "Estudios Sociales", "Ciencias" }));
+        cbxAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAsignaturaActionPerformed(evt);
+            }
+        });
 
         txtCedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -193,16 +198,16 @@ public class RegistroProfesor extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jButton1.setText("Limpiar Tabla");
+        jButtonLimpiarTabla.setText("Limpiar Tabla");
 
-        jButton2.setText("Editar");
+        jButtonEditar.setText("Editar");
 
-        jButton3.setText("Buscar");
+        jButtonBuscar.setText("Buscar");
 
-        jButton4.setText("Eliminar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonEliminarActionPerformed(evt);
             }
         });
 
@@ -275,15 +280,15 @@ public class RegistroProfesor extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel18)
                         .addGap(30, 30, 30)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonLimpiarTabla)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addComponent(jButtonGuardar)
                         .addGap(79, 79, 79)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(75, 75, 75)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
                         .addComponent(jButtonMostrar)
                         .addGap(33, 33, 33)))
@@ -347,10 +352,10 @@ public class RegistroProfesor extends javax.swing.JFrame {
                     .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonGuardar)
                         .addComponent(jButtonMostrar)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2)
-                        .addComponent(jButton3)
-                        .addComponent(jButton4))
+                        .addComponent(jButtonLimpiarTabla)
+                        .addComponent(jButtonEditar)
+                        .addComponent(jButtonBuscar)
+                        .addComponent(jButtonEliminar))
                     .addComponent(jLabel18))
                 .addGap(21, 21, 21))
         );
@@ -383,9 +388,9 @@ public class RegistroProfesor extends javax.swing.JFrame {
         mostarLSPTbl();
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
@@ -393,6 +398,11 @@ public class RegistroProfesor extends javax.swing.JFrame {
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void cbxAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAsignaturaActionPerformed
+       String asigSeleccionada;
+       asigSeleccionada=cbxAsignatura.getSelectedItem().toString();
+    }//GEN-LAST:event_cbxAsignaturaActionPerformed
 
     public void mostarLSPTbl() {
         NodoProfLS aux = Rutinas.inicioLSP;
@@ -472,11 +482,11 @@ public class RegistroProfesor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxAsignatura;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonLimpiarTabla;
     private javax.swing.JButton jButtonMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
