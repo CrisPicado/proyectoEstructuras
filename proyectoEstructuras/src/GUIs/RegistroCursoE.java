@@ -481,7 +481,7 @@ public class RegistroCursoE extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
-        RegistroMatriculas r = new RegistroMatriculas();
+        RegistroCursoM r = new RegistroCursoM();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
@@ -501,14 +501,22 @@ public class RegistroCursoE extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Rutinas.insertarLSC(cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible);
         limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Rutinas.editarRegistroLSC(cedula, nombre, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
         buscarRegistroLSC(cedula);
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -661,8 +669,6 @@ public class RegistroCursoE extends javax.swing.JFrame {
 
             } else if (Validaciones.validarCedula(txtCed.getText()) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar cedula!");
-            } else if (Validaciones.validarCorreo(txtCorreo.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
             }
 
         } catch (Exception e) {

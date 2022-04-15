@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListadoEstudiantesM extends javax.swing.JFrame {
 
-    RegistroMatriculas r = new RegistroMatriculas();
+    RegistroCursoM r = new RegistroCursoM();
     
     DefaultTableModel modelo;
     String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};

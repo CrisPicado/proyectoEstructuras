@@ -341,11 +341,11 @@ public class RegistroCursoES extends javax.swing.JFrame {
                         .addComponent(btnCln)
                         .addGap(68, 68, 68)
                         .addComponent(btnGuardar)
-                        .addGap(121, 121, 121)
+                        .addGap(73, 73, 73)
                         .addComponent(btnEditar)
-                        .addGap(103, 103, 103)
+                        .addGap(89, 89, 89)
                         .addComponent(btnBuscar)
-                        .addGap(96, 96, 96)
+                        .addGap(98, 98, 98)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2)
@@ -448,9 +448,14 @@ public class RegistroCursoES extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Rutinas.insertarLD(cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible);
         limpiar();
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -491,7 +496,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
-        RegistroMatriculas r = new RegistroMatriculas();
+        RegistroCursoM r = new RegistroCursoM();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
@@ -505,7 +510,11 @@ public class RegistroCursoES extends javax.swing.JFrame {
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+        try{
+            capturarDatos();
+        }catch(Exception e ){
+            System.out.println(e);
+        }
         Rutinas.editarRegistroLD(cedula, nombre, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
         buscarRegistroLD(cedula);
     }//GEN-LAST:event_btnEditarActionPerformed
@@ -611,8 +620,6 @@ public class RegistroCursoES extends javax.swing.JFrame {
 
             } else if (Validaciones.validarCedula(txtCed.getText()) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar cedula!");
-            } else if (Validaciones.validarCorreo(txtCorreo.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
             }
 
         } catch (Exception e) {

@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Cris Picado
  */
-public class RegistroMatriculas extends javax.swing.JFrame {
+public class RegistroCursoM extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
     String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
@@ -30,13 +30,14 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     /**
      * Creates new form RegistroEstudiantes
      */
-    public RegistroMatriculas() {
+    public RegistroCursoM() {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Registro Matricula Matemáticas");
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
+        this.txtCed.requestFocus();
     }
 
     /**
@@ -348,15 +349,15 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 .addComponent(btnCln)
                 .addGap(80, 80, 80)
                 .addComponent(btnGuardar)
-                .addGap(111, 111, 111)
+                .addGap(89, 89, 89)
                 .addComponent(btnEdit)
-                .addGap(93, 93, 93)
-                .addComponent(btnBuscar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnBuscar)
+                .addGap(76, 76, 76)
                 .addComponent(btnEliminar)
-                .addGap(123, 123, 123)
+                .addGap(97, 97, 97)
                 .addComponent(btnMostrar)
-                .addGap(37, 37, 37))
+                .addGap(51, 51, 51))
         );
         panelRojoLayout.setVerticalGroup(
             panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,9 +464,16 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Rutinas.insertarLS(cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible);
         limpiar();
+
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -500,7 +508,12 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+
+        try{
+            capturarDatos();
+        }catch(Exception e ){
+            System.out.println(e);
+        }
         Rutinas.editarRegistroLS(cedula, nombre, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
         buscarRegistroLS(cedula);
     }//GEN-LAST:event_btnEditActionPerformed
@@ -508,30 +521,34 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private void txtNomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar(); // se asigna a C el evento de obtener lo que se teclea
-        if((c < 'a' || c >'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
     }//GEN-LAST:event_txtNomKeyTyped
 
     private void txtApPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApPKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar(); // se asigna a C el evento de obtener lo que se teclea
-        if((c < 'a' || c >'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
     }//GEN-LAST:event_txtApPKeyTyped
 
     private void txtApMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApMKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar(); // se asigna a C el evento de obtener lo que se teclea
-        if((c < 'a' || c >'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume(); //Permite ingresar unicamente valores string al text field mediante el evento consume, cuya funcionalidad es procesar los datos dependiendo de una condición
     }//GEN-LAST:event_txtApMKeyTyped
 
     private void txtContactoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactoKeyTyped
         // TODO add your handling code here:
-        char c = evt.getKeyChar(); 
-        if(c<'0' || c>'9')evt.consume();//Permite ingresar unicamente valores numericos al textfield mediante el metodo consume
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();//Permite ingresar unicamente valores numericos al textfield mediante el metodo consume
     }//GEN-LAST:event_txtContactoKeyTyped
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
-        RegistroMatriculas r = new RegistroMatriculas();
+        RegistroCursoM r = new RegistroCursoM();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
@@ -572,7 +589,6 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         return horarios;
 
     }
-
 
     public void buscarRegistroLS(String ced) {
         NodoLS aux = inicioLS;
@@ -628,9 +644,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 horarioDisponible = cbxHorarios.getSelectedItem().toString();
 
             } else if (Validaciones.validarCedula(txtCed.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar cedula!");
-            } else if (Validaciones.validarCorreo(txtCorreo.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar cedula", "Estado captura datos", JOptionPane.WARNING_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -676,21 +690,23 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroMatriculas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroCursoM.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegistroMatriculas().setVisible(true);
+                new RegistroCursoM().setVisible(true);
             }
         });
     }

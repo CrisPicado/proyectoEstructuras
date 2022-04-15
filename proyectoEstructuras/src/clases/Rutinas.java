@@ -102,34 +102,45 @@ public class Rutinas {
 
     //////////************ Metodos para Lista Simple - Curso Matematicas ************//////////
     public static void insertarLS(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String tipoHorario, String horario) {//"No. Cédula","Nombre","Apellido Paterno","Apellido Materno","Contacto","Tipo Horario","Horario"
-        Estudiante e = new Estudiante();
-        e.setNumCedula(ced);
-        e.setNombre(nom);
-        e.setApePaterno(apePA);
-        e.setApeMaterno(apeMa);
-        e.setContacto(contacto);
-        e.setCorreo(correo);
-        e.setHorario(horario);
-        e.setTipoHorario(tipoHorario);
-        NodoLS nuevo = new NodoLS();
-        nuevo.setElemento(e);
-        if (estaLSVacia()) {
-            inicioLS = nuevo;
-        } else if (e.getNumCedula().compareTo(inicioLS.getElemento().getNumCedula()) < 0) {
-            nuevo.setSiguiente(inicioLS);
-            inicioLS = nuevo;
-        } else if (inicioLS.getSiguiente() == null) {
-            inicioLS.setSiguiente(nuevo);
-        } else {
-            NodoLS aux = inicioLS;
-            while ((aux.getSiguiente() != null) && (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula())) < 0) {
-                aux = aux.getSiguiente();
-            }
-            nuevo.setSiguiente(aux.getSiguiente());
-            aux.setSiguiente(nuevo);
-        }
+        try {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
 
-        JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la lista simple!");
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoLS nuevo = new NodoLS();
+                nuevo.setElemento(e);
+                if (estaLSVacia()) {
+                    inicioLS = nuevo;
+                } else if (e.getNumCedula().compareTo(inicioLS.getElemento().getNumCedula()) < 0) {
+                    nuevo.setSiguiente(inicioLS);
+                    inicioLS = nuevo;
+                } else if (inicioLS.getSiguiente() == null) {
+                    inicioLS.setSiguiente(nuevo);
+                } else {
+                    NodoLS aux = inicioLS;
+                    while ((aux.getSiguiente() != null) && (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula())) < 0) {
+                        aux = aux.getSiguiente();
+                    }
+                    nuevo.setSiguiente(aux.getSiguiente());
+                    aux.setSiguiente(nuevo);
+                }
+
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la lista simple!");
+            }
+
+        } catch (Exception e) {
+            //System.out.println("Revisar insertarLS" + e);
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
+        }
 
     }
 
@@ -182,37 +193,52 @@ public class Rutinas {
     }
 
     public static void editarRegistroLS(String cedula, String nombre, String apellidoP, String apellidoM, String correo, String contacto, String tipoHorario, String horarioDisponible) {
-        String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
-        boolean encontrado = false;
-        NodoLS aux = inicioLS;
 
-        if (!Rutinas.estaLSVacia()) {
+        try {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+                String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
+                boolean encontrado = false;
+                NodoLS aux = inicioLS;
 
-            while (aux != null && encontrado != true) {
+                if (!Rutinas.estaLSVacia()) {
 
-                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                    while (aux != null && encontrado != true) {
 
-                    if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+                        if (aux.getElemento().getNumCedula().equals(pCed)) {
 
-                        aux.getElemento().setNumCedula(cedula);
-                        aux.getElemento().setNombre(nombre);
-                        aux.getElemento().setApePaterno(apellidoP);
-                        aux.getElemento().setApeMaterno(apellidoM);
-                        aux.getElemento().setContacto(contacto);
-                        aux.getElemento().setCorreo(correo);
-                        aux.getElemento().setTipoHorario(tipoHorario);
-                        aux.getElemento().setHorario(horarioDisponible);
-                        encontrado = true;
+                            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo) == true) {
+
+                                aux.getElemento().setNumCedula(cedula);
+                                aux.getElemento().setNombre(nombre);
+                                aux.getElemento().setApePaterno(apellidoP);
+                                aux.getElemento().setApeMaterno(apellidoM);
+                                aux.getElemento().setContacto(contacto);
+                                aux.getElemento().setCorreo(correo);
+                                aux.getElemento().setTipoHorario(tipoHorario);
+                                aux.getElemento().setHorario(horarioDisponible);
+                                encontrado = true;
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
+                            }
+                            aux = aux.getSiguiente();
+                        }
+
                     }
+                    if (!encontrado) {
+                        JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
                 }
-                aux = aux.getSiguiente();
             }
-            if (!encontrado) {
-                JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            //System.out.println("Revisar insertarLS" + e);
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
+
     }
 
     //////////************ Metodos para Lista Simple Profesores ************//////////
@@ -261,79 +287,96 @@ public class Rutinas {
 
     //////////************ Metodos para Lista Doble - Curso Estudios Sociales ************//////////
     public static void insertarLD(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
-        Estudiante e = new Estudiante();
-        e.setNumCedula(ced);
-        e.setNombre(nom);
-        e.setApePaterno(apePA);
-        e.setApeMaterno(apeMa);
-        e.setContacto(contacto);
-        e.setCorreo(correo);
-        e.setHorario(horario);
-        e.setTipoHorario(tipoHorario);
-        NodoLD nuevo = new NodoLD();
-        nuevo.setElemento(e);
-        if (Rutinas.estaLDVacia()) {
-            inicioLD = nuevo;
-            inicioLD.setSiguiente(null);
-            inicioLD.setAnterior(null);
-            finLD = inicioLD;
-        } else if (e.getNumCedula().compareTo(inicioLD.getElemento().getNumCedula()) < 0) { // Integer.parseInt(e.getNumCedula()) < Integer.parseInt(inicioLD.getElemento().getNumCedula())
-            inicioLD.setAnterior(nuevo);
-            nuevo.setSiguiente(inicioLD);
-            inicioLD = nuevo;
-            inicioLD.setAnterior(finLD);
-        } else if (e.getNumCedula().compareTo(finLD.getElemento().getNumCedula()) > 0) { // Integer.parseInt(e.getNumCedula()) > Integer.parseInt(finLD.getElemento().getNumCedula())
-            finLD.setSiguiente(nuevo);
-            nuevo.setSiguiente(null);
-            nuevo.setAnterior(finLD);
-            finLD = nuevo;
 
-        } else {
-            NodoLD aux = inicioLD;
+        try {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoLD nuevo = new NodoLD();
+                nuevo.setElemento(e);
+                if (Rutinas.estaLDVacia()) {
+                    inicioLD = nuevo;
+                    inicioLD.setSiguiente(null);
+                    inicioLD.setAnterior(null);
+                    finLD = inicioLD;
+                } else if (e.getNumCedula().compareTo(inicioLD.getElemento().getNumCedula()) < 0) { // Integer.parseInt(e.getNumCedula()) < Integer.parseInt(inicioLD.getElemento().getNumCedula())
+                    inicioLD.setAnterior(nuevo);
+                    nuevo.setSiguiente(inicioLD);
+                    inicioLD = nuevo;
+                    inicioLD.setAnterior(finLD);
+                } else if (e.getNumCedula().compareTo(finLD.getElemento().getNumCedula()) > 0) { // Integer.parseInt(e.getNumCedula()) > Integer.parseInt(finLD.getElemento().getNumCedula())
+                    finLD.setSiguiente(nuevo);
+                    nuevo.setSiguiente(null);
+                    nuevo.setAnterior(finLD);
+                    finLD = nuevo;
 
-            while (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula()) < 0) { // Integer.parseInt(aux.getElemento().getNumCedula()) < Integer.parseInt(e.getNumCedula())
-                aux = aux.getSiguiente();
+                } else {
+                    NodoLD aux = inicioLD;
+
+                    while (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula()) < 0) { // Integer.parseInt(aux.getElemento().getNumCedula()) < Integer.parseInt(e.getNumCedula())
+                        aux = aux.getSiguiente();
+                    }
+                    nuevo.setSiguiente(aux.getSiguiente());
+                    nuevo.setAnterior(aux);
+                    aux.setSiguiente(nuevo);
+                }
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la lista doble!");
             }
-            nuevo.setSiguiente(aux.getSiguiente());
-            nuevo.setAnterior(aux);
-            aux.setSiguiente(nuevo);
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la lista doble!");
 
     }
 
     public static void editarRegistroLD(String cedula, String nombre, String apellidoP, String apellidoM, String correo, String contacto, String tipoHorario, String horarioDisponible) {
-        String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
-        boolean encontrado = false;
-        NodoLD aux = inicioLD;
 
-        if (!Rutinas.estaLDVacia()) {
+        try {
+            String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
+            boolean encontrado = false;
+            NodoLD aux = inicioLD;
 
-            while (aux != null && encontrado != true) {
+            if (!Rutinas.estaLDVacia()) {
 
-                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                while (aux != null && encontrado != true) {
 
-                    if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+                    if (aux.getElemento().getNumCedula().equals(pCed)) {
 
-                        aux.getElemento().setNumCedula(cedula);
-                        aux.getElemento().setNombre(nombre);
-                        aux.getElemento().setApePaterno(apellidoP);
-                        aux.getElemento().setApeMaterno(apellidoM);
-                        aux.getElemento().setContacto(contacto);
-                        aux.getElemento().setCorreo(correo);
-                        aux.getElemento().setTipoHorario(tipoHorario);
-                        aux.getElemento().setHorario(horarioDisponible);
-                        encontrado = true;
+                        if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo) == true) {
+
+                            aux.getElemento().setNumCedula(cedula);
+                            aux.getElemento().setNombre(nombre);
+                            aux.getElemento().setApePaterno(apellidoP);
+                            aux.getElemento().setApeMaterno(apellidoM);
+                            aux.getElemento().setContacto(contacto);
+                            aux.getElemento().setCorreo(correo);
+                            aux.getElemento().setTipoHorario(tipoHorario);
+                            aux.getElemento().setHorario(horarioDisponible);
+                            encontrado = true;
+                        }
                     }
+                    aux = aux.getSiguiente();
                 }
-                aux = aux.getSiguiente();
+                if (!encontrado) {
+                    JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
             }
-            if (!encontrado) {
-                JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
+
         }
+
     }
 
     public static void eliminarRegistroLD(String ced) {
@@ -368,66 +411,64 @@ public class Rutinas {
 
     //////////************ Metodos para Lista Simple Circular - Curso Espanol ************//////////
     public static void insertarLSC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String tipoHorario, String horario) {
-        Estudiante e = new Estudiante();
-        e.setNumCedula(ced);
-        e.setNombre(nom);
-        e.setApePaterno(apePA);
-        e.setApeMaterno(apeMa);
-        e.setContacto(contacto);
-        e.setCorreo(correo);
-        e.setHorario(horario);
-        e.setTipoHorario(tipoHorario);
-        NodoSC nuevo = new NodoSC();
-        nuevo.setElemento(e);
-        if (Rutinas.estaSCVacia()) {
-            inicioSC = nuevo;
-            finSC = nuevo;
-            inicioSC.setSiguiente(inicioSC);
-        } else if (e.getNumCedula().compareTo(inicioSC.getElemento().getNumCedula()) < 0) {
-            nuevo.setSiguiente(inicioSC);
-            inicioSC = nuevo;
-            finSC.setSiguiente(inicioSC);
-        } else if (e.getNumCedula().compareTo(finSC.getElemento().getNumCedula()) > 0) {
-            finSC.setSiguiente(nuevo);
-            nuevo.setSiguiente(inicioSC);
-            finSC = nuevo;
-            finSC.setSiguiente(inicioSC);
-        } else {
-            NodoSC aux = inicioSC;
-            while (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula()) < 0) {
-                aux = aux.getSiguiente();
+
+        try {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoSC nuevo = new NodoSC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaSCVacia()) {
+                    inicioSC = nuevo;
+                    finSC = nuevo;
+                    inicioSC.setSiguiente(inicioSC);
+                } else if (e.getNumCedula().compareTo(inicioSC.getElemento().getNumCedula()) < 0) {
+                    nuevo.setSiguiente(inicioSC);
+                    inicioSC = nuevo;
+                    finSC.setSiguiente(inicioSC);
+                } else if (e.getNumCedula().compareTo(finSC.getElemento().getNumCedula()) > 0) {
+                    finSC.setSiguiente(nuevo);
+                    nuevo.setSiguiente(inicioSC);
+                    finSC = nuevo;
+                    finSC.setSiguiente(inicioSC);
+                } else {
+                    NodoSC aux = inicioSC;
+                    while (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula()) < 0) {
+                        aux = aux.getSiguiente();
+                    }
+                    nuevo.setSiguiente(aux.getSiguiente());
+                    aux.setSiguiente(nuevo);
+                    finSC.setSiguiente(inicioSC);
+                }
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Circular Simple!");
             }
-            nuevo.setSiguiente(aux.getSiguiente());
-            aux.setSiguiente(nuevo);
-            finSC.setSiguiente(inicioSC);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Circular Simple!");
     }
 
     public static void editarRegistroLSC(String cedula, String nombre, String apellidoP, String apellidoM, String correo, String contacto, String tipoHorario, String horarioDisponible) {
-        String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
-        boolean encontrado = false;
-        NodoSC aux = inicioSC;
 
-        if (!Rutinas.estaSCVacia()) {
+        try {
 
-            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+                String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
+                boolean encontrado = false;
+                NodoSC aux = inicioSC;
 
-                aux.getElemento().setNumCedula(cedula);
-                aux.getElemento().setNombre(nombre);
-                aux.getElemento().setApePaterno(apellidoP);
-                aux.getElemento().setApeMaterno(apellidoM);
-                aux.getElemento().setContacto(contacto);
-                aux.getElemento().setCorreo(correo);
-                aux.getElemento().setTipoHorario(tipoHorario);
-                aux.getElemento().setHorario(horarioDisponible);
-                encontrado = true;
-            }
-            aux = aux.getSiguiente();
-
-            while (aux != null && encontrado != true) {
-
-                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                if (!Rutinas.estaSCVacia()) {
 
                     if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
 
@@ -442,13 +483,36 @@ public class Rutinas {
                         encontrado = true;
                     }
                     aux = aux.getSiguiente();
-                }
-                if (!encontrado) {
-                    JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
+
+                    while (aux != null && encontrado != true) {
+
+                        if (aux.getElemento().getNumCedula().equals(pCed)) {
+
+                            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+
+                                aux.getElemento().setNumCedula(cedula);
+                                aux.getElemento().setNombre(nombre);
+                                aux.getElemento().setApePaterno(apellidoP);
+                                aux.getElemento().setApeMaterno(apellidoM);
+                                aux.getElemento().setContacto(contacto);
+                                aux.getElemento().setCorreo(correo);
+                                aux.getElemento().setTipoHorario(tipoHorario);
+                                aux.getElemento().setHorario(horarioDisponible);
+                                encontrado = true;
+                            }
+                            aux = aux.getSiguiente();
+                        }
+                        if (!encontrado) {
+                            JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -527,70 +591,70 @@ public class Rutinas {
 
     //////////************ Metodos para Lista Doble Circular - Curso Ciencias ************//////////
     public static void insertarLDC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
-        Estudiante e = new Estudiante();
-        e.setNumCedula(ced);
-        e.setNombre(nom);
-        e.setApePaterno(apePA);
-        e.setApeMaterno(apeMa);
-        e.setContacto(contacto);
-        e.setCorreo(correo);
-        e.setHorario(horario);
-        e.setTipoHorario(tipoHorario);
-        NodoDC nuevo = new NodoDC();
-        nuevo.setElemento(e);
-        if (Rutinas.estaDCVacia()) {
-            inicioDC = nuevo;
-            finDC = nuevo;
-            finDC.setSiguiente(inicioDC);
-            inicioDC.setAnterior(finDC);
-        } else if (e.getNumCedula().compareTo(inicioDC.getElemento().getNumCedula()) < 0) {
-            nuevo.setSiguiente(inicioDC);
-            inicioDC = nuevo;
-            finDC.setSiguiente(inicioDC);
-            inicioDC.setAnterior(finDC);
-        } else if (e.getNumCedula().compareTo(finDC.getElemento().getNumCedula()) > 0) {
-            finDC.setSiguiente(nuevo);
-            finDC = nuevo;
-            finDC.setSiguiente(inicioDC);
-            inicioDC.setAnterior(finDC);
-        } else {
-            NodoDC aux = inicioDC;
-            while (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula()) < 0) {
-                aux = aux.getSiguiente();
+        try {
+
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoDC nuevo = new NodoDC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaDCVacia()) {
+                    inicioDC = nuevo;
+                    finDC = nuevo;
+                    finDC.setSiguiente(inicioDC);
+                    inicioDC.setAnterior(finDC);
+                } else if (e.getNumCedula().compareTo(inicioDC.getElemento().getNumCedula()) < 0) {
+                    nuevo.setSiguiente(inicioDC);
+                    inicioDC = nuevo;
+                    finDC.setSiguiente(inicioDC);
+                    inicioDC.setAnterior(finDC);
+                } else if (e.getNumCedula().compareTo(finDC.getElemento().getNumCedula()) > 0) {
+                    finDC.setSiguiente(nuevo);
+                    finDC = nuevo;
+                    finDC.setSiguiente(inicioDC);
+                    inicioDC.setAnterior(finDC);
+                } else {
+                    NodoDC aux = inicioDC;
+                    while (aux.getSiguiente().getElemento().getNumCedula().compareTo(e.getNumCedula()) < 0) {
+                        aux = aux.getSiguiente();
+                    }
+                    nuevo.setSiguiente(aux.getSiguiente());
+                    nuevo.setAnterior(aux);
+                    aux.setSiguiente(nuevo);
+                    nuevo.getSiguiente().setAnterior(nuevo);
+                }
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Doble Circular!");
+
             }
-            nuevo.setSiguiente(aux.getSiguiente());
-            nuevo.setAnterior(aux);
-            aux.setSiguiente(nuevo);
-            nuevo.getSiguiente().setAnterior(nuevo);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
-        JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Doble Circular!");
 
     }
 
     public static void editarRegistroLDC(String cedula, String nombre, String apellidoP, String apellidoM, String correo, String contacto, String tipoHorario, String horarioDisponible) {
-        String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
-        boolean encontrado = false;
-        NodoDC aux = inicioDC;
 
-        if (!Rutinas.estaDCVacia()) {
+        try {
 
-            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+                String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
+                boolean encontrado = false;
+                NodoDC aux = inicioDC;
 
-                aux.getElemento().setNumCedula(cedula);
-                aux.getElemento().setNombre(nombre);
-                aux.getElemento().setApePaterno(apellidoP);
-                aux.getElemento().setApeMaterno(apellidoM);
-                aux.getElemento().setContacto(contacto);
-                aux.getElemento().setCorreo(correo);
-                aux.getElemento().setTipoHorario(tipoHorario);
-                aux.getElemento().setHorario(horarioDisponible);
-                encontrado = true;
-            }
-            aux = aux.getSiguiente();
-
-            while (aux != inicioDC && encontrado != true) {
-
-                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                if (!Rutinas.estaDCVacia()) {
 
                     if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
 
@@ -605,14 +669,38 @@ public class Rutinas {
                         encontrado = true;
                     }
                     aux = aux.getSiguiente();
-                }
-                if (!encontrado) {
-                    JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
+
+                    while (aux != inicioDC && encontrado != true) {
+
+                        if (aux.getElemento().getNumCedula().equals(pCed)) {
+
+                            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo)) {
+
+                                aux.getElemento().setNumCedula(cedula);
+                                aux.getElemento().setNombre(nombre);
+                                aux.getElemento().setApePaterno(apellidoP);
+                                aux.getElemento().setApeMaterno(apellidoM);
+                                aux.getElemento().setContacto(contacto);
+                                aux.getElemento().setCorreo(correo);
+                                aux.getElemento().setTipoHorario(tipoHorario);
+                                aux.getElemento().setHorario(horarioDisponible);
+                                encontrado = true;
+                            }
+                            aux = aux.getSiguiente();
+                        }
+                        if (!encontrado) {
+                            JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
+
     }
 
     public static void eliminarRegistroLDC(String ced) {
@@ -623,9 +711,9 @@ public class Rutinas {
         do {
 
             if (aux.getElemento().getNumCedula().equals(ced)) {
-                if(inicioDC == inicioDC.getSiguiente()){
+                if (inicioDC == inicioDC.getSiguiente()) {
                     inicioDC = null;
-                }else if (aux == inicioDC) {
+                } else if (aux == inicioDC) {
                     inicioDC = inicioDC.getSiguiente();
                     finDC.setSiguiente(inicioDC);
                     inicioDC.setAnterior(finDC);

@@ -38,29 +38,28 @@ public class Validaciones {
         }
         return false;
     }
-    
-    public static String formatoCedula(String cedula){
-        
-        String seg1 = cedula.substring(0,1);
-        String seg2 = cedula.substring(1,5);
-        String seg3 = cedula.substring(5,9);
-        
-        return seg1+"-"+seg2+"-"+seg3;
-  
+
+    public static String formatoCedula(String cedula) {
+
+        String seg1 = cedula.substring(0, 1);
+        String seg2 = cedula.substring(1, 5);
+        String seg3 = cedula.substring(5, 9);
+
+        return seg1 + "-" + seg2 + "-" + seg3;
+
     }
-    
-    public static boolean validarCorreo(String correo){
-        //cpicado869@gmail.com
+
+    public static boolean validarCorreo(String correo) {
         // Patrón para validar el email
         Pattern pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                         + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
- 
+
         // El email a validar
         String pCorreo = correo;
- 
+
         Matcher mather = pattern.matcher(pCorreo);
- 
+
         if (mather.find() == true) {
             return true;
         } else {
@@ -68,4 +67,14 @@ public class Validaciones {
         }
     }
 
+    public static boolean validarVacios(String cedula, String nombre, String apePa, String apeMa, String contacto, String correo){
+        
+        if(cedula.equals("") && nombre.equals("") && apePa.equals("") && apeMa.equals("") && contacto.equals("") && correo.equals("") ){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
 }

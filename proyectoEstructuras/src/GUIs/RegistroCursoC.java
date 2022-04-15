@@ -252,7 +252,7 @@ public class RegistroCursoC extends javax.swing.JFrame {
             }
         });
 
-        btnMostrar.setText("Mostrar");
+        btnMostrar.setText("Mostrar Lista");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMostrarActionPerformed(evt);
@@ -357,17 +357,17 @@ public class RegistroCursoC extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addGap(18, 18, 18)
                         .addComponent(btnCln)
-                        .addGap(81, 81, 81)
+                        .addGap(87, 87, 87)
                         .addComponent(btnGuardar)
-                        .addGap(112, 112, 112)
+                        .addGap(97, 97, 97)
                         .addComponent(btnEdit)
-                        .addGap(73, 73, 73)
+                        .addGap(92, 92, 92)
                         .addComponent(btnBuscar)
-                        .addGap(125, 125, 125)
+                        .addGap(121, 121, 121)
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnMostrar)
-                        .addGap(22, 22, 22))))
+                        .addGap(24, 24, 24))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -460,7 +460,7 @@ public class RegistroCursoC extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
-        RegistroMatriculas r = new RegistroMatriculas();
+        RegistroCursoM r = new RegistroCursoM();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
@@ -502,7 +502,11 @@ public class RegistroCursoC extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+        try{
+            capturarDatos();
+        }catch(Exception e){
+            System.out.println(e);
+        }
         Rutinas.insertarLDC(cedula, nombre, apePa, apeMa, contacto, correo, horarioDisponible, tipoHorario);
         limpiar();
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -530,7 +534,11 @@ public class RegistroCursoC extends javax.swing.JFrame {
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
-        capturarDatos();
+        try{
+            capturarDatos();
+        }catch(Exception e){
+            System.out.println(e);
+        }
         Rutinas.editarRegistroLDC(cedula, nombre, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
         buscarRegistroLDC(cedula);
     }//GEN-LAST:event_btnEditActionPerformed
@@ -557,8 +565,6 @@ public class RegistroCursoC extends javax.swing.JFrame {
 
             } else if (Validaciones.validarCedula(txtCed.getText()) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar cedula!");
-            } else if (Validaciones.validarCorreo(txtCorreo.getText()) == false) {
-                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
             }
 
         } catch (Exception e) {
@@ -614,6 +620,12 @@ public class RegistroCursoC extends javax.swing.JFrame {
             horarios[3] = "J (9 pm - 11 pm)";
             horarios[4] = "V (10 pm - 12 mn)";
         }
+        
+        
+        for (int x = 0; x < horarios.length; x++) {
+            Rutinas.llenarPila(horarios[x]);
+        }
+
         return horarios;
 
     }
