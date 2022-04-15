@@ -5,6 +5,10 @@
  */
 package GUIs;
 
+import clases.NodoLD;
+import clases.Rutinas;
+import static clases.Rutinas.inicioLD;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -106,6 +110,11 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblRegistro);
 
         jButton1.setText("Mostrar Lista");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -147,6 +156,12 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        mostrarLDtbl();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -180,6 +195,37 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
                 new ListadoEstudiantES().setVisible(true);
             }
         });
+    }
+    
+    public void mostrarLDtbl() {
+        NodoLD aux = Rutinas.inicioLD;
+
+        if (!Rutinas.estaLDVacia()) {
+            
+            while (aux != null) {
+
+                try {
+                    cedula = aux.getElemento().getNumCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apePa = aux.getElemento().getApePaterno();
+                    apeMa = aux.getElemento().getApeMaterno();
+                    contacto = aux.getElemento().getContacto();
+                    correo = aux.getElemento().getCorreo();
+                    tipoHorario = aux.getElemento().getTipoHorario();
+                    horarioDisponible = aux.getElemento().getHorario();
+
+                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+                    modelo.addRow(fila);
+
+                    aux = aux.getSiguiente();
+                } catch (Exception e) {
+                    System.out.println("Error: Revisar metodo mostrarLD" + e);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Imposible mostrar lista doble, lista vacia.", "Estado muestra de lista estudiantes", JOptionPane.ERROR_MESSAGE);
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

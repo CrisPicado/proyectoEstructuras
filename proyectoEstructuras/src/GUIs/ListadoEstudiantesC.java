@@ -5,6 +5,11 @@
  */
 package GUIs;
 
+import clases.NodoDC;
+import clases.Rutinas;
+import static clases.Rutinas.inicioDC;
+import clases.Validaciones;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -92,6 +97,11 @@ public class ListadoEstudiantesC extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_home_page_32px.png"))); // NOI18N
 
         jButton1.setText("Mostrar Lista");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -148,6 +158,11 @@ public class ListadoEstudiantesC extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        mostrarLDC();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -183,8 +198,47 @@ public class ListadoEstudiantesC extends javax.swing.JFrame {
         });
     }
     
-    public void mostrarlista(){
-        
+    public void mostrarLDC(){
+        NodoDC aux = inicioDC;
+
+        if (!Rutinas.estaDCVacia()) {
+
+            cedula = aux.getElemento().getNumCedula();
+            nombre = aux.getElemento().getNombre();
+            apePa = aux.getElemento().getApePaterno();
+            apeMa = aux.getElemento().getApeMaterno();
+            contacto = aux.getElemento().getContacto();
+            correo = aux.getElemento().getCorreo();
+            tipoHorario = aux.getElemento().getTipoHorario();
+            horarioDisponible = aux.getElemento().getHorario();
+
+            Object[] fila1 = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+            modelo.addRow(fila1);
+
+            aux = aux.getSiguiente();
+            while (aux != inicioDC ) {
+
+                try {
+                    cedula = aux.getElemento().getNumCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apePa = aux.getElemento().getApePaterno();
+                    apeMa = aux.getElemento().getApeMaterno();
+                    contacto = aux.getElemento().getContacto();
+                    correo = aux.getElemento().getCorreo();
+                    tipoHorario = aux.getElemento().getTipoHorario();
+                    horarioDisponible = aux.getElemento().getHorario();
+
+                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+                    modelo.addRow(fila);
+
+                    aux = aux.getSiguiente();
+                } catch (Exception e) {
+                    System.out.println("Error: Revisar" + e);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Doble Circular", "Contenido de la Lista Doble Circular", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

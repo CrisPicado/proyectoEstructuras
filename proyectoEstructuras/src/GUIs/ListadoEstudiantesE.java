@@ -5,6 +5,9 @@
  */
 package GUIs;
 
+import clases.NodoSC;
+import clases.Rutinas;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,16 +16,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListadoEstudiantesE extends javax.swing.JFrame {
 
-    
     RegistroCursoE r = new RegistroCursoE();
-    
+
     DefaultTableModel modelo;
     String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
     String[] datos = new String[8];
 
     private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;
 
-    
     /**
      * Creates new form ListadoEstudiantesE
      */
@@ -51,7 +52,7 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRegistro = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        btnMostrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +70,7 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 868, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 768, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -80,7 +81,7 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, -1));
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 102));
 
@@ -106,7 +107,12 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblRegistro);
 
-        jButton1.setText("Mostrar Lista");
+        btnMostrar.setText("Mostrar Tabla");
+        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -117,14 +123,14 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel2)
-                        .addGap(305, 305, 305)
-                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMostrar)
+                        .addGap(301, 301, 301)
                         .addComponent(jLabel3))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -135,11 +141,11 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(15, 15, 15))
         );
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 790, 390));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 780, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,6 +155,11 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
+        // TODO add your handling code here:
+        mostrarLSCTbl();
+    }//GEN-LAST:event_btnMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,8 +196,53 @@ public class ListadoEstudiantesE extends javax.swing.JFrame {
         });
     }
 
+    public void mostrarLSCTbl() {
+
+        NodoSC aux = Rutinas.inicioSC;
+
+        if (!Rutinas.estaSCVacia()) {
+
+            cedula = aux.getElemento().getNumCedula();
+            nombre = aux.getElemento().getNombre();
+            apePa = aux.getElemento().getApePaterno();
+            apeMa = aux.getElemento().getApeMaterno();
+            contacto = aux.getElemento().getContacto();
+            correo = aux.getElemento().getCorreo();
+            tipoHorario = aux.getElemento().getTipoHorario();
+            horarioDisponible = aux.getElemento().getHorario();
+
+            Object[] fila1 = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+            modelo.addRow(fila1);
+
+            aux = aux.getSiguiente();
+
+            while (aux != Rutinas.inicioSC) {
+                
+                try {
+                    cedula = aux.getElemento().getNumCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apePa = aux.getElemento().getApePaterno();
+                    apeMa = aux.getElemento().getApeMaterno();
+                    contacto = aux.getElemento().getContacto();
+                    correo = aux.getElemento().getCorreo();
+                    tipoHorario = aux.getElemento().getTipoHorario();
+                    horarioDisponible = aux.getElemento().getHorario();
+
+                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
+                    modelo.addRow(fila);
+
+                    aux = aux.getSiguiente();
+                } catch (Exception e) {
+                    System.out.println("Error: Revisar" + e);
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Imposible mostrar lista simple circular, lista vacia.", "Estado muestra de lista estudiantes", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

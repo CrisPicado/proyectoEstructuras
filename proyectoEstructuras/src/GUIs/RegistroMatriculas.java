@@ -246,7 +246,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         txtCorreo1.setMinimumSize(new java.awt.Dimension(7, 29));
         txtCorreo1.setPreferredSize(new java.awt.Dimension(7, 29));
 
-        btnCln.setText("Limpiar tabla");
+        btnCln.setText("Limpiar Tabla");
         btnCln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClnActionPerformed(evt);
@@ -336,7 +336,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
                                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtCorreo1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(panelRojoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -480,6 +480,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
         // TODO add your handling code here:
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
+        limpiar();
     }//GEN-LAST:event_btnClnActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -500,8 +501,8 @@ public class RegistroMatriculas extends javax.swing.JFrame {
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
         // TODO add your handling code here:
         capturarDatos();
-        Rutinas.editarRegistroLS(cedula, nombre, apePa, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
-        mostrarLSTbl();
+        Rutinas.editarRegistroLS(cedula, nombre, apePa, apeMa, correo, contacto, tipoHorario, horarioDisponible);
+        buscarRegistroLS(cedula);
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void txtNomKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomKeyTyped
@@ -572,38 +573,8 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
     }
 
-    public  void mostrarLSTbl() {
-        NodoLS aux = Rutinas.inicioLS;
-        if (!Rutinas.estaLSVacia()) {
 
-            while (aux != null) {
-
-                try {
-                    cedula = aux.getElemento().getNumCedula();
-                    nombre = aux.getElemento().getNombre();
-                    apePa = aux.getElemento().getApePaterno();
-                    apeMa = aux.getElemento().getApeMaterno();
-                    contacto = aux.getElemento().getContacto();
-                    correo = aux.getElemento().getCorreo();
-                    tipoHorario = aux.getElemento().getTipoHorario();
-                    horarioDisponible = aux.getElemento().getHorario();
-
-                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
-                    modelo.addRow(fila);
-
-                    aux = aux.getSiguiente();
-                } catch (Exception e) {
-                    System.out.println("Error: Revisar" + e);
-                }
-
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Error: Imposible mostrar lista simple, lista vacia.", "Estado muestra de lista estudiantes", JOptionPane.ERROR_MESSAGE);
-        }
-
-    }
-
-    public void buscarRegistroLS(String cedula) {
+    public void buscarRegistroLS(String ced) {
         NodoLS aux = inicioLS;
         boolean encontrado = false;
 
@@ -611,7 +582,7 @@ public class RegistroMatriculas extends javax.swing.JFrame {
 
             while (aux != null && encontrado != true) {
 
-                if (aux.getElemento().getNumCedula().equals(cedula)) {
+                if (aux.getElemento().getNumCedula().equals(ced)) {
                     cedula = aux.getElemento().getNumCedula();
                     nombre = aux.getElemento().getNombre();
                     apePa = aux.getElemento().getApePaterno();
