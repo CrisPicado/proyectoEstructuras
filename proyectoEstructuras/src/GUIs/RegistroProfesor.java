@@ -121,10 +121,25 @@ public class RegistroProfesor extends javax.swing.JFrame {
         jLabel6.setText("Número de contacto:");
 
         txtNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         txtApellidoP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtApellidoP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoPKeyTyped(evt);
+            }
+        });
 
         txtApellidoM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtApellidoM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoMKeyTyped(evt);
+            }
+        });
 
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,12 +212,32 @@ public class RegistroProfesor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtContacto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContactoKeyTyped(evt);
+            }
+        });
 
         jButtonLimpiarTabla.setText("Limpiar Tabla");
+        jButtonLimpiarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarTablaActionPerformed(evt);
+            }
+        });
 
         jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jButtonEliminar.setText("Eliminar");
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -380,16 +415,26 @@ public class RegistroProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        capturarDatos();
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Rutinas.insertarLSP(cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura);
+        limpiar();
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        mostarLSPTbl();
+        ListadoProfesores abrir = new ListadoProfesores();
+        abrir.setVisible(true);
+        limpiar();
+        this.dispose();
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
-        // TODO add your handling code here:
+        limpiar();
+        String cedula2 = JOptionPane.showInputDialog(null, "Digite la cedula del usuario a eliminar");
+        Rutinas.eliminarRegistroLSP(Validaciones.formatoCedula(cedula2));
     }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
@@ -400,30 +445,92 @@ public class RegistroProfesor extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel18MouseClicked
 
     private void cbxAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAsignaturaActionPerformed
-       String asigSeleccionada;
-       asigSeleccionada=cbxAsignatura.getSelectedItem().toString();
+
     }//GEN-LAST:event_cbxAsignaturaActionPerformed
 
-    public void mostarLSPTbl() {
-        NodoProfLS aux = Rutinas.inicioLSP;
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        Rutinas.editarRegistroLSP(cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura);
+        buscarRegistroLSP(cedula);
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonLimpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarTablaActionPerformed
+        modelo = new DefaultTableModel(null, titulos);
+        tblRegistro.setModel(modelo);
+        limpiar();
+    }//GEN-LAST:event_jButtonLimpiarTablaActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String cedula1 = JOptionPane.showInputDialog(null, "Digite la cedula del profesor buscar: ", "Consulta busqueda Profesores", JOptionPane.QUESTION_MESSAGE);
+        buscarRegistroLSP(Validaciones.formatoCedula(cedula1));
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume();
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoPKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume();
+    }//GEN-LAST:event_txtApellidoPKeyTyped
+
+    private void txtApellidoMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoMKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume();
+    }//GEN-LAST:event_txtApellidoMKeyTyped
+
+    private void txtContactoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactoKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_txtContactoKeyTyped
+
+    public void buscarRegistroLSP(String ced){
+        NodoProfLS aux=Rutinas.inicioLSP;
+        boolean encontrado = false;
 
         if (!Rutinas.vaciaLSP()) {
-            while (aux != null) {
-                cedula = aux.getElemento().getCedula();
-                nombre = aux.getElemento().getNombre();
-                apellidoP = aux.getElemento().getApellidoP();
-                apellidoM = aux.getElemento().getApellidoM();
-                telefono = aux.getElemento().getTelefono();
-                correo = aux.getElemento().getCorreo();
-                asignatura = aux.getElemento().getAsignatura();
 
-                Object[] fila = {cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura};
-                modelo.addRow(fila);
+            while (aux != null && encontrado != true) {
 
+                if (aux.getElemento().getCedula().equals(ced)) {
+                    cedula = aux.getElemento().getCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apellidoP = aux.getElemento().getApellidoP();
+                    apellidoM = aux.getElemento().getApellidoM();
+                    telefono = aux.getElemento().getTelefono();
+                    correo = aux.getElemento().getCorreo();
+                    asignatura = aux.getElemento().getAsignatura();
+
+                    txtCedula.setText(cedula);
+                    txtNombre.setText(nombre);
+                    txtApellidoP.setText(apellidoP);
+                    txtApellidoM.setText(apellidoM);
+                    txtContacto.setText(telefono);
+                    txtCorreo.setText(correo);
+                    cbxAsignatura.setSelectedItem(asignatura);
+
+                    Object[] fila = {cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura};
+                    modelo.addRow(fila);
+                    encontrado = true;
+                }
                 aux = aux.getSiguiente();
             }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Imposible mostrar lista simple, lista vacia.", "Estado muestra de lista estudiantes", JOptionPane.ERROR_MESSAGE);
         }
+
     }
+        
 
     public void capturarDatos() {
         try {
@@ -440,6 +547,22 @@ public class RegistroProfesor extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error: Revisar captura datos de form\n" + e);
         }
+    }
+      public void limpiar() {
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellidoP.setText("");
+        txtApellidoM.setText("");
+        txtContacto.setText("");
+        txtCorreo.setText("");
+        cbxAsignatura.setSelectedIndex(0);
+        cedula = null;
+        nombre = null;
+        apellidoM = null;
+        apellidoP = null;
+        telefono = null;
+        correo = null;
+        asignatura = null;
     }
 
     /**

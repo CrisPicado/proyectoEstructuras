@@ -285,6 +285,88 @@ public class Rutinas {
         }
     }
 
+    public static void eliminarRegistroLSP(String cedula) {
+        boolean encontrado = false;
+        NodoProfLS aux = inicioLSP;
+        NodoProfLS anterior = null;
+
+        if (!Rutinas.vaciaLSP()) {
+
+            while (aux != null && encontrado != true) {
+
+                if (aux.getElemento().getCedula().equals(cedula)) {
+
+                    if (aux == inicioLSP) {
+                        inicioLSP = inicioLSP.getSiguiente();
+                    } else if (aux == finLSP) {
+                        anterior.setSiguiente(null);
+                        finLSP = anterior;
+                    } else {
+                        anterior.setSiguiente(aux.getSiguiente());
+                    }
+                    JOptionPane.showMessageDialog(null, "Datos eliminados correctamente");
+                    encontrado = true;
+
+                }
+                anterior = aux;
+                aux = aux.getSiguiente();
+            }
+            if (!encontrado) {
+                JOptionPane.showMessageDialog(null, "Dato no encontrado , vehiculo consultado no existe");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public static void editarRegistroLSP(String cedula, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String asignatura) {
+
+        try {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else {
+                String pCed = Validaciones.formatoCedula(JOptionPane.showInputDialog("Digite la cedula del estudiante a modificar: "));
+                boolean encontrado = false;
+                NodoProfLS aux = inicioLSP;
+
+                if (!Rutinas.vaciaLSP()) {
+
+                    while (aux != null && encontrado != true) {
+
+                        if (aux.getElemento().getCedula().equals(pCed)) {
+
+                            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo) == true) {
+
+                                aux.getElemento().setCedula(cedula);
+                                aux.getElemento().setNombre(nombre);
+                                aux.getElemento().setApellidoP(apellidoP);
+                                aux.getElemento().setApellidoM(apellidoM);
+                                aux.getElemento().setTelefono(telefono);
+                                aux.getElemento().setCorreo(correo);
+                                aux.getElemento().setAsignatura(asignatura);
+                                encontrado = true;
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
+                            }
+                            aux = aux.getSiguiente();
+                        }
+
+                    }
+                    if (!encontrado) {
+                        JOptionPane.showMessageDialog(null, "Dato no encontrado , profesor consultado no existe");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+
+        } catch (Exception e) {
+            //System.out.println("Revisar insertarLS" + e);
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
     //////////************ Metodos para Lista Doble - Curso Estudios Sociales ************//////////
     public static void insertarLD(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
 
