@@ -39,6 +39,7 @@ public class Validaciones {
         return false;
     }
 
+    
     public static String formatoCedula(String cedula) {
 
         String seg1 = cedula.substring(0, 1);

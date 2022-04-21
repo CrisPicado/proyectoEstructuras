@@ -31,6 +31,9 @@ public class Rutinas {
 
     public static NodoP cima;
 
+    public static NodoC inicioC;
+    public static NodoC finC;
+
     //inicialización de nodos
     public Rutinas() {
         this.inicioLS = null;
@@ -49,6 +52,9 @@ public class Rutinas {
         this.finLSP = null;
 
         this.cima = null;
+
+        this.inicioC = null;
+        this.finC = null;
     }
 
     //Validar estado vacio de estructuras
@@ -94,6 +100,14 @@ public class Rutinas {
 
     public static boolean estaPilaVacia() {
         if (cima == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaVacia() {
+        if (inicioC == null) {
             return true;
         } else {
             return false;
@@ -208,7 +222,7 @@ public class Rutinas {
 
                         if (aux.getElemento().getNumCedula().equals(pCed)) {
 
-                            if (Validaciones.validarCedula(pCed) == true && Validaciones.validarCorreo(correo) == true) {
+                            if (Validaciones.validarCedula(cedula) == true && Validaciones.validarCorreo(correo) == true) {
 
                                 aux.getElemento().setNumCedula(cedula);
                                 aux.getElemento().setNombre(nombre);
@@ -219,12 +233,9 @@ public class Rutinas {
                                 aux.getElemento().setTipoHorario(tipoHorario);
                                 aux.getElemento().setHorario(horarioDisponible);
                                 encontrado = true;
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
                             }
-                            aux = aux.getSiguiente();
                         }
-
+                        aux = aux.getSiguiente();
                     }
                     if (!encontrado) {
                         JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
@@ -286,7 +297,7 @@ public class Rutinas {
     }
 
     //////////************ Metodos para Lista Doble - Curso Estudios Sociales ************//////////
-    public static void insertarLD(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+    public static void insertarLD(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String tipoHorario, String horarioDisponible) {
 
         try {
             if (Validaciones.validarCorreo(correo) == false) {
@@ -299,8 +310,8 @@ public class Rutinas {
                 e.setApeMaterno(apeMa);
                 e.setContacto(contacto);
                 e.setCorreo(correo);
-                e.setHorario(horario);
                 e.setTipoHorario(tipoHorario);
+                e.setHorario(horarioDisponible);
                 NodoLD nuevo = new NodoLD();
                 nuevo.setElemento(e);
                 if (Rutinas.estaLDVacia()) {
@@ -363,6 +374,7 @@ public class Rutinas {
                             aux.getElemento().setHorario(horarioDisponible);
                             encontrado = true;
                         }
+
                     }
                     aux = aux.getSiguiente();
                 }
@@ -749,7 +761,7 @@ public class Rutinas {
             nuevo.setSiguiente(cima);
             cima = nuevo;
         }
-        System.out.println("elemento apilado");
+        System.out.println("Elemento Apilado");
     }
 
     public static void mostrarPila() {
@@ -770,4 +782,47 @@ public class Rutinas {
 
     }
 
+    public static void encolar(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+        Estudiante e = new Estudiante();
+        e.setNumCedula(ced);
+        e.setNombre(nom);
+        e.setApePaterno(apePA);
+        e.setApeMaterno(apeMa);
+        e.setContacto(contacto);
+        e.setCorreo(correo);
+        e.setHorario(horario);
+        e.setTipoHorario(tipoHorario);
+        NodoC nuevo = new NodoC();
+        nuevo.setElemento(e);
+        if (Rutinas.estaColaVacia()) {
+            inicioC = nuevo;
+            finC = nuevo;
+        } else {
+            finC.setSiguiente(nuevo);
+            finC = nuevo;
+        }
+        JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+    }
+    
+    public static void mostrarCola(){
+        
+        
+        if (!Rutinas.estaColaVacia()) {
+            NodoC aux = inicioC;
+            String s = "";
+            while (aux != null) {
+                s = s + aux.getElemento().getNumCedula() + " -- " + aux.getElemento().getNombre() + " -- "
+                        + aux.getElemento().getApePaterno() + " -- "+aux.getElemento().getApeMaterno() + " -- "
+                        +aux.getElemento().getTipoHorario() + " -- "+aux.getElemento().getHorario() +"-->";
+                aux = aux.getSiguiente();
+            }
+            JOptionPane.showMessageDialog(null, "La cola contiene:\n" + s);
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede mostrar. Cola vacía!");
+        }
+    }
+
+    
+    
+    
 }
