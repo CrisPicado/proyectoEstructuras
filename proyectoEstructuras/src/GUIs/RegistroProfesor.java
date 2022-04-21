@@ -19,7 +19,7 @@ public class RegistroProfesor extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
     String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo electrónico", "Asignatura"};
-    String[] datos = new String[8];
+    String[] datos = new String[7];
 
     private String nombre, cedula, apellidoP, apellidoM, correo, asignatura, telefono;
 
@@ -30,6 +30,7 @@ public class RegistroProfesor extends javax.swing.JFrame {
         setTitle("Registro de Profesores");
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
+        this.txtCedula.requestFocus();
     }
 
     @SuppressWarnings("unchecked")
@@ -65,6 +66,11 @@ public class RegistroProfesor extends javax.swing.JFrame {
         cbxAsignatura = new javax.swing.JComboBox<>();
         txtCedula = new javax.swing.JFormattedTextField();
         txtContacto = new javax.swing.JFormattedTextField();
+        jButtonLimpiarTabla = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonBuscar = new javax.swing.JButton();
+        jButtonEliminar = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -115,10 +121,25 @@ public class RegistroProfesor extends javax.swing.JFrame {
         jLabel6.setText("Número de contacto:");
 
         txtNombre.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
+            }
+        });
 
         txtApellidoP.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtApellidoP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoPKeyTyped(evt);
+            }
+        });
 
         txtApellidoM.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+        txtApellidoM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtApellidoMKeyTyped(evt);
+            }
+        });
 
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,8 +183,6 @@ public class RegistroProfesor extends javax.swing.JFrame {
         });
 
         txtCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        txtCorreo.setMinimumSize(new java.awt.Dimension(7, 29));
-        txtCorreo.setPreferredSize(new java.awt.Dimension(7, 29));
 
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_mail_26px.png"))); // NOI18N
 
@@ -175,6 +194,11 @@ public class RegistroProfesor extends javax.swing.JFrame {
 
         cbxAsignatura.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         cbxAsignatura.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Selecciona Asignatura-", "Español", "Matemáticas", "Estudios Sociales", "Ciencias" }));
+        cbxAsignatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxAsignaturaActionPerformed(evt);
+            }
+        });
 
         txtCedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
@@ -188,6 +212,46 @@ public class RegistroProfesor extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtContacto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtContactoKeyTyped(evt);
+            }
+        });
+
+        jButtonLimpiarTabla.setText("Limpiar Tabla");
+        jButtonLimpiarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarTablaActionPerformed(evt);
+            }
+        });
+
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
+
+        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_back_to_32px.png"))); // NOI18N
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRojoLayout = new javax.swing.GroupLayout(panelRojo);
         panelRojo.setLayout(panelRojoLayout);
@@ -196,11 +260,6 @@ public class RegistroProfesor extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRojoLayout.createSequentialGroup()
                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRojoLayout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(jButtonGuardar)
-                        .addGap(128, 128, 128)
-                        .addComponent(jButtonMostrar))
                     .addGroup(panelRojoLayout.createSequentialGroup()
                         .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelRojoLayout.createSequentialGroup()
@@ -251,7 +310,23 @@ public class RegistroProfesor extends javax.swing.JFrame {
                                 .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelRojoLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 934, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelRojoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel18)
+                        .addGap(30, 30, 30)
+                        .addComponent(jButtonLimpiarTabla)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                        .addComponent(jButtonGuardar)
+                        .addGap(79, 79, 79)
+                        .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(jButtonBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jButtonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
+                        .addComponent(jButtonMostrar)
+                        .addGap(33, 33, 33)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRojoLayout.setVerticalGroup(
@@ -305,13 +380,19 @@ public class RegistroProfesor extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addComponent(txtApellidoM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonGuardar)
-                    .addComponent(jButtonMostrar))
-                .addGap(30, 30, 30))
+                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButtonGuardar)
+                        .addComponent(jButtonMostrar)
+                        .addComponent(jButtonLimpiarTabla)
+                        .addComponent(jButtonEditar)
+                        .addComponent(jButtonBuscar)
+                        .addComponent(jButtonEliminar))
+                    .addComponent(jLabel18))
+                .addGap(21, 21, 21))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -334,34 +415,122 @@ public class RegistroProfesor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
-        capturarDatos();
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         Rutinas.insertarLSP(cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura);
+        limpiar();
     }//GEN-LAST:event_jButtonGuardarActionPerformed
 
     private void jButtonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMostrarActionPerformed
-        mostarLSPTbl();
+        ListadoProfesores abrir = new ListadoProfesores();
+        abrir.setVisible(true);
+        limpiar();
+        this.dispose();
     }//GEN-LAST:event_jButtonMostrarActionPerformed
 
-    public void mostarLSPTbl() {
-        NodoProfLS aux = Rutinas.inicioLSP;
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        limpiar();
+        String cedula2 = JOptionPane.showInputDialog(null, "Digite la cedula del usuario a eliminar");
+        Rutinas.eliminarRegistroLSP(Validaciones.formatoCedula(cedula2));
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+        RegistroCursoM r = new RegistroCursoM();
+        r.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void cbxAsignaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxAsignaturaActionPerformed
+
+    }//GEN-LAST:event_cbxAsignaturaActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        try {
+            capturarDatos();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        Rutinas.editarRegistroLSP(cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura);
+        buscarRegistroLSP(cedula);
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonLimpiarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarTablaActionPerformed
+        modelo = new DefaultTableModel(null, titulos);
+        tblRegistro.setModel(modelo);
+        limpiar();
+    }//GEN-LAST:event_jButtonLimpiarTablaActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        String cedula1 = JOptionPane.showInputDialog(null, "Digite la cedula del profesor buscar: ", "Consulta busqueda Profesores", JOptionPane.QUESTION_MESSAGE);
+        buscarRegistroLSP(Validaciones.formatoCedula(cedula1));
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume();
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoPKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume();
+    }//GEN-LAST:event_txtApellidoPKeyTyped
+
+    private void txtApellidoMKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtApellidoMKeyTyped
+        char c = evt.getKeyChar();
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && (c < ' ' || c > ' '))
+            evt.consume();
+    }//GEN-LAST:event_txtApellidoMKeyTyped
+
+    private void txtContactoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactoKeyTyped
+        char c = evt.getKeyChar();
+        if (c < '0' || c > '9')
+            evt.consume();
+    }//GEN-LAST:event_txtContactoKeyTyped
+
+    public void buscarRegistroLSP(String ced){
+        NodoProfLS aux=Rutinas.inicioLSP;
+        boolean encontrado = false;
 
         if (!Rutinas.vaciaLSP()) {
-            while (aux != null) {
-                cedula = aux.getElemento().getCedula();
-                nombre = aux.getElemento().getNombre();
-                apellidoP = aux.getElemento().getApellidoP();
-                apellidoM = aux.getElemento().getApellidoM();
-                telefono = aux.getElemento().getTelefono();
-                correo = aux.getElemento().getCorreo();
-                asignatura = aux.getElemento().getAsignatura();
 
-                Object[] fila = {cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura};
-                modelo.addRow(fila);
+            while (aux != null && encontrado != true) {
 
+                if (aux.getElemento().getCedula().equals(ced)) {
+                    cedula = aux.getElemento().getCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apellidoP = aux.getElemento().getApellidoP();
+                    apellidoM = aux.getElemento().getApellidoM();
+                    telefono = aux.getElemento().getTelefono();
+                    correo = aux.getElemento().getCorreo();
+                    asignatura = aux.getElemento().getAsignatura();
+
+                    txtCedula.setText(cedula);
+                    txtNombre.setText(nombre);
+                    txtApellidoP.setText(apellidoP);
+                    txtApellidoM.setText(apellidoM);
+                    txtContacto.setText(telefono);
+                    txtCorreo.setText(correo);
+                    cbxAsignatura.setSelectedItem(asignatura);
+
+                    Object[] fila = {cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura};
+                    modelo.addRow(fila);
+                    encontrado = true;
+                }
                 aux = aux.getSiguiente();
             }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Imposible mostrar lista simple, lista vacia.", "Estado muestra de lista estudiantes", JOptionPane.ERROR_MESSAGE);
         }
+
     }
+        
 
     public void capturarDatos() {
         try {
@@ -378,6 +547,22 @@ public class RegistroProfesor extends javax.swing.JFrame {
         } catch (Exception e) {
             System.out.println("Error: Revisar captura datos de form\n" + e);
         }
+    }
+      public void limpiar() {
+        txtCedula.setText("");
+        txtNombre.setText("");
+        txtApellidoP.setText("");
+        txtApellidoM.setText("");
+        txtContacto.setText("");
+        txtCorreo.setText("");
+        cbxAsignatura.setSelectedIndex(0);
+        cedula = null;
+        nombre = null;
+        apellidoM = null;
+        apellidoP = null;
+        telefono = null;
+        correo = null;
+        asignatura = null;
     }
 
     /**
@@ -420,7 +605,11 @@ public class RegistroProfesor extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxAsignatura;
+    private javax.swing.JButton jButtonBuscar;
+    private javax.swing.JButton jButtonEditar;
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
+    private javax.swing.JButton jButtonLimpiarTabla;
     private javax.swing.JButton jButtonMostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -429,6 +618,7 @@ public class RegistroProfesor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
