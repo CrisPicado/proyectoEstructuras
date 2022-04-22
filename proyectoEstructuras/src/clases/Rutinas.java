@@ -119,6 +119,8 @@ public class Rutinas {
         try {
             if (Validaciones.validarCorreo(correo) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else if (existeLS(ced) == true) {
+                JOptionPane.showMessageDialog(null, "Error: Estudiante existente en sistema! Favor validar.", "Estado registro - Matemáticas", JOptionPane.ERROR_MESSAGE);
             } else {
 
                 Estudiante e = new Estudiante();
@@ -152,9 +154,31 @@ public class Rutinas {
             }
 
         } catch (Exception e) {
-            //System.out.println("Revisar insertarLS" + e);
             JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
+
+    }
+
+    public static boolean existeLS(String pCed) {
+
+        boolean siExiste = false;
+        NodoLS aux = inicioLS;
+
+        if (!Rutinas.estaLSVacia()) {
+
+            while (aux != null && siExiste != true) {
+
+                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                    siExiste = true;
+                    return siExiste;
+                } else {
+                    siExiste = false;
+                }
+                aux = aux.getSiguiente();
+            }
+        }
+
+        return siExiste;
 
     }
 
@@ -254,32 +278,66 @@ public class Rutinas {
 
     //////////************ Metodos para Lista Simple Profesores ************//////////
     public static void insertarLSP(String cedula, String nombre, String apellidoP, String apellidoM, String telefono, String correo, String asignatura) {
-        Profesores r = new Profesores();
-        r.setCedula(cedula);
-        r.setNombre(nombre);
-        r.setApellidoP(apellidoP);
-        r.setApellidoM(apellidoM);
-        r.setTelefono(telefono);
-        r.setCorreo(correo);
-        r.setAsignatura(asignatura);
-        NodoProfLS nuevo = new NodoProfLS();
-        nuevo.setElemento(r);
-        if (vaciaLSP()) {
-            inicioLSP = nuevo;
-        } else if (r.getCedula().compareTo(inicioLSP.getElemento().getCedula()) < 0) {
-            nuevo.setSiguiente(inicioLSP);
-            inicioLSP = nuevo;
-        } else if (inicioLSP.getSiguiente() == null) {
-            inicioLSP.setSiguiente(nuevo);
-        } else {
-            NodoProfLS aux = inicioLSP;
-            while ((aux.getSiguiente() != null) && (aux.getSiguiente().getElemento().getCedula().compareTo(r.getCedula()) < 0)) {
+        try {
+            if (Validaciones.validarCorreo(correo) == false) {
+                JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!", "Estado registro Profesores", JOptionPane.ERROR_MESSAGE);
+            } else if (existeLSP(cedula) == true) {
+                JOptionPane.showMessageDialog(null, "Error: Profesor existente en sistema! Favor validar.", "Estado registro Profesores", JOptionPane.ERROR_MESSAGE);
+            } else {
+                Profesores r = new Profesores();
+                r.setCedula(cedula);
+                r.setNombre(nombre);
+                r.setApellidoP(apellidoP);
+                r.setApellidoM(apellidoM);
+                r.setTelefono(telefono);
+                r.setCorreo(correo);
+                r.setAsignatura(asignatura);
+                NodoProfLS nuevo = new NodoProfLS();
+                nuevo.setElemento(r);
+                if (vaciaLSP()) {
+                    inicioLSP = nuevo;
+                } else if (r.getCedula().compareTo(inicioLSP.getElemento().getCedula()) < 0) {
+                    nuevo.setSiguiente(inicioLSP);
+                    inicioLSP = nuevo;
+                } else if (inicioLSP.getSiguiente() == null) {
+                    inicioLSP.setSiguiente(nuevo);
+                } else {
+                    NodoProfLS aux = inicioLSP;
+                    while ((aux.getSiguiente() != null) && (aux.getSiguiente().getElemento().getCedula().compareTo(r.getCedula()) < 0)) {
+                        aux = aux.getSiguiente();
+                    }
+                    nuevo.setSiguiente(aux.getSiguiente());
+                    aux.setSiguiente(nuevo);
+                }
+                JOptionPane.showMessageDialog(null, "Profesor" + r.getCedula() + " - " + r.getNombre() + " " + r.getApellidoP() + " " + r.getApellidoM() + "ha sido agregado a la lista!");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    public static boolean existeLSP(String pCed) {
+
+        boolean siExiste = false;
+        NodoProfLS aux = inicioLSP;
+
+        if (!Rutinas.vaciaLSP()) {
+
+            while (aux != null && siExiste != true) {
+
+                if (aux.getElemento().getCedula().equals(pCed)) {
+                    siExiste = true;
+                    return siExiste;
+                } else {
+                    siExiste = false;
+                }
                 aux = aux.getSiguiente();
             }
-            nuevo.setSiguiente(aux.getSiguiente());
-            aux.setSiguiente(nuevo);
         }
-        JOptionPane.showMessageDialog(null, "Profesor" + r.getCedula() + " - " + r.getNombre() + " " + r.getApellidoP() + " " + r.getApellidoM() + "ha sido agregado a la lista!");
+
+        return siExiste;
+
     }
 
     public static void mostrarLSP() {
@@ -384,6 +442,8 @@ public class Rutinas {
         try {
             if (Validaciones.validarCorreo(correo) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else if (existeLD(ced) == true) {
+                JOptionPane.showMessageDialog(null, "Error: Estudiante existente en sistema! Favor validar.", "Estado registro Profesores", JOptionPane.ERROR_MESSAGE);
             } else {
                 Estudiante e = new Estudiante();
                 e.setNumCedula(ced);
@@ -428,6 +488,29 @@ public class Rutinas {
 
             JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
+
+    }
+
+    public static boolean existeLD(String pCed) {
+
+        boolean siExiste = false;
+        NodoLD aux = inicioLD;
+
+        if (!Rutinas.estaLDVacia()) {
+
+            while (aux != null && siExiste != true) {
+
+                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                    siExiste = true;
+                    return siExiste;
+                } else {
+                    siExiste = false;
+                }
+                aux = aux.getSiguiente();
+            }
+        }
+
+        return siExiste;
 
     }
 
@@ -509,6 +592,8 @@ public class Rutinas {
         try {
             if (Validaciones.validarCorreo(correo) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else if (existeLSC(ced) == true) {
+                JOptionPane.showMessageDialog(null, "Error: Estudiante existente en sistema! Favor validar.", "Estado registro Profesores", JOptionPane.ERROR_MESSAGE);
             } else {
 
                 Estudiante e = new Estudiante();
@@ -549,6 +634,30 @@ public class Rutinas {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
+    }
+
+    public static boolean existeLSC(String pCed) {
+
+        boolean siEsta = false;
+        NodoSC aux = inicioSC;
+
+        if (!Rutinas.estaSCVacia()) {
+
+            while (aux != null && siEsta != true) {
+
+                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                    siEsta = true;
+                    return siEsta;
+                } else {
+                    siEsta = false;
+                }
+                aux = aux.getSiguiente();
+            }
+
+        } else {
+            return siEsta;
+        }
+        return siEsta;
     }
 
     public static void editarRegistroLSC(String cedula, String nombre, String apellidoP, String apellidoM, String correo, String contacto, String tipoHorario, String horarioDisponible) {
@@ -689,6 +798,8 @@ public class Rutinas {
 
             if (Validaciones.validarCorreo(correo) == false) {
                 JOptionPane.showMessageDialog(null, "Error en ingreso de datos, favor revisar correo electronico!");
+            } else if (existeLDC(ced) == true) {
+                JOptionPane.showMessageDialog(null, "Error: Estudiante existente en sistema! Favor validar.", "Estado registro Profesores", JOptionPane.ERROR_MESSAGE);
             } else {
 
                 Estudiante e = new Estudiante();
@@ -734,6 +845,30 @@ public class Rutinas {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
         }
+    }
+
+    public static boolean existeLDC(String pCed) {
+
+        boolean siEsta = false;
+        NodoDC aux = inicioDC;
+
+        if (!Rutinas.estaDCVacia()) {
+
+            while (aux != null && siEsta != true) {
+
+                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                    siEsta = true;
+                    return siEsta;
+                } else {
+                    siEsta = false;
+                }
+                aux = aux.getSiguiente();
+            }
+
+        } else {
+            return siEsta;
+        }
+        return siEsta;
 
     }
 
@@ -885,17 +1020,16 @@ public class Rutinas {
         }
         JOptionPane.showMessageDialog(null, "Estudiante encolado!");
     }
-    
-    public static void mostrarCola(){
-        
-        
+
+    public static void mostrarCola() {
+
         if (!Rutinas.estaColaVacia()) {
             NodoC aux = inicioC;
             String s = "";
             while (aux != null) {
                 s = s + aux.getElemento().getNumCedula() + " -- " + aux.getElemento().getNombre() + " -- "
-                        + aux.getElemento().getApePaterno() + " -- "+aux.getElemento().getApeMaterno() + " -- "
-                        +aux.getElemento().getTipoHorario() + " -- "+aux.getElemento().getHorario() +"-->";
+                        + aux.getElemento().getApePaterno() + " -- " + aux.getElemento().getApeMaterno() + " -- "
+                        + aux.getElemento().getTipoHorario() + " -- " + aux.getElemento().getHorario() + "-->";
                 aux = aux.getSiguiente();
             }
             JOptionPane.showMessageDialog(null, "La cola contiene:\n" + s);
@@ -904,7 +1038,4 @@ public class Rutinas {
         }
     }
 
-    
-    
-    
 }

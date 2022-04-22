@@ -224,6 +224,7 @@ public class GruposMatutinos extends javax.swing.JFrame {
 
             if (aux.getElemento().getTipoHorario().equals("Matutino")) {
 
+              
                 Rutinas.encolar(aux.getElemento().getNumCedula(), aux.getElemento().getNombre(), aux.getElemento().getApePaterno(), aux.getElemento().getApeMaterno(), aux.getElemento().getContacto(), aux.getElemento().getCorreo(), aux.getElemento().getTipoHorario(), aux.getElemento().getHorario());
                 aux = aux.getSiguiente();
 

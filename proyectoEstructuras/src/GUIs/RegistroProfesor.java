@@ -545,7 +545,7 @@ public class RegistroProfesor extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            System.out.println("Error: Revisar captura datos de form\n" + e);
+            System.out.println("Error: Revisar captura datos de formulario\n" + e);
         }
     }
       public void limpiar() {
