@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import static clases.Rutinas.inicioDC;
 import static clases.Rutinas.finDC;
 import clases.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,9 +33,13 @@ public class RegistroCursoC extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Registro Matricula Ciencias");
+        setTitle("Registro Matricula - Curso Ciencias");
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
+        ImageIcon IconoForm = new ImageIcon("src/imgs/icons8_physics_60px.png");
+        this.setIconImage(IconoForm.getImage());
+        
+        
     }
 
     /**

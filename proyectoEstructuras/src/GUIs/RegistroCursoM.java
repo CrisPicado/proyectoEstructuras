@@ -13,6 +13,7 @@ import clases.*;
 import static clases.Rutinas.inicioLS;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,10 +35,12 @@ public class RegistroCursoM extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Registro Matricula Matemáticas");
+        setTitle("Registro Matricula - Curso Matemáticas");
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
         this.txtCed.requestFocus();
+        ImageIcon IconoForm = new ImageIcon("src/imgs/icons8_calculator_42px.png");
+        this.setIconImage(IconoForm.getImage());
     }
 
     /**

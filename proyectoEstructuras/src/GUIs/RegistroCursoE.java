@@ -10,6 +10,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 import clases.*;
 import static clases.Rutinas.inicioSC;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,9 +32,11 @@ public class RegistroCursoE extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Registro Matricula Español");
+        setTitle("Registro Matricula - Curso Español");
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
+        ImageIcon IconoForm = new ImageIcon("src/imgs/icons8_books_60px.png");
+        this.setIconImage(IconoForm.getImage());
     }
 
     /**

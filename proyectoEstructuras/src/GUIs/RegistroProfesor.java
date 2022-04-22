@@ -9,6 +9,7 @@ import java.awt.event.ItemEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import clases.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,8 @@ public class RegistroProfesor extends javax.swing.JFrame {
         modelo = new DefaultTableModel(null, titulos);
         tblRegistro.setModel(modelo);
         this.txtCedula.requestFocus();
+        ImageIcon IconoForm = new ImageIcon("src/imgs/icons8_teacher_60px.png");
+        this.setIconImage(IconoForm.getImage());
     }
 
     @SuppressWarnings("unchecked")
