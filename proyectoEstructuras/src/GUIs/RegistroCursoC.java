@@ -428,17 +428,20 @@ public class RegistroCursoC extends javax.swing.JFrame {
                                 .addComponent(jLabel5)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel17)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCln)
-                        .addComponent(btnGuardar)
-                        .addComponent(btnEdit)
-                        .addComponent(btnBuscar)
-                        .addComponent(btnEliminar)
-                        .addComponent(btnMostrar)))
-                .addGap(31, 31, 31))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnCln)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnEdit)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnMostrar)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(23, 23, 23))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 580));
@@ -465,7 +468,7 @@ public class RegistroCursoC extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
-        RegistroCursoM r = new RegistroCursoM();
+        ModRegistroE r = new ModRegistroE();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked

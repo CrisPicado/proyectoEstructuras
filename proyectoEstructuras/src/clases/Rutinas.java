@@ -14,25 +14,75 @@ import javax.swing.JOptionPane;
 public class Rutinas {
 
     //Declaración de Nodos
+    
+    //Nodos Lista Simple - Matematicas
     public static NodoLS inicioLS;
     public static NodoLS finLS;
 
+    //Nodos Lista Doble - Estudios Sociales
     public static NodoLD inicioLD;
     public static NodoLD finLD;
 
+    //Nodos Lista Simple Circular -  Espanol
     public static NodoSC inicioSC;
     public static NodoSC finSC;
 
+    //Nodos Lista Doble Circular - Ciencias
     public static NodoDC inicioDC;
     public static NodoDC finDC;
-
+ 
+    //Nodos Lista Simple - Profesores
     public static NodoProfLS inicioLSP;
     public static NodoProfLS finLSP;
 
+    //Nodo pila - almacena horarios
     public static NodoP cima;
 
-    public static NodoC inicioC;
-    public static NodoC finC;
+    //Cola Grupo Matematicas - Horario Matutino
+    public static NodoC inicioCMatuMat;
+    public static NodoC finCMatuMat;
+    //Cola Grupo Matematicas - Horario Vespertino
+    public static NodoC inicioCVesMat;
+    public static NodoC finCVesMat;
+
+    //Cola Grupo Matematicas - Horario Nocturno
+    public static NodoC inicioCNocMat;
+    public static NodoC finCNocMat;
+
+    //Cola Grupo Estudios Sociales - Horario Matutino
+    public static NodoC inicioCMatuES;
+    public static NodoC finCMatuES;
+    //Cola Grupo Estudios Sociales - Horario Vespertino
+    public static NodoC inicioCVesperES;
+    public static NodoC finCVesperES;
+
+    //Cola Grupo Estudios Sociales - Horario Nocturno
+    public static NodoC inicioCNocES;
+    public static NodoC finCNocES;
+
+    //Cola Grupo Espanol - Horario Matutino
+    public static NodoC inicioCMatuE;
+    public static NodoC finCMatuE;
+
+    //Cola Grupo Espanol - Horario Vespertino
+    public static NodoC inicioCVesperE;
+    public static NodoC finCVesperE;
+
+    //Cola Grupo Espanol - Horario Nocturno
+    public static NodoC inicioCNocE;
+    public static NodoC finCNocE;
+
+    //Cola Grupo Ciencias - Horario Matutino
+    public static NodoC inicioCMatuC;
+    public static NodoC finCMatuC;
+
+    //Cola Grupo Ciencias - Horario Matutino
+    public static NodoC inicioCVesperC;
+    public static NodoC finCVesperC;
+
+    //Cola Grupo Ciencias - Horario Matutino
+    public static NodoC inicioCNoC;
+    public static NodoC finCNoC;
 
     //inicialización de nodos
     public Rutinas() {
@@ -53,8 +103,42 @@ public class Rutinas {
 
         this.cima = null;
 
-        this.inicioC = null;
-        this.finC = null;
+        this.inicioCMatuMat = null;
+        this.finCMatuMat = null;
+
+        this.inicioCVesMat = null;
+        this.finCVesMat = null;
+
+        this.inicioCNocMat = null;
+        this.finCNocMat = null;
+
+        this.inicioCMatuES = null;
+        this.finCMatuES = null;
+
+        this.inicioCVesperES = null;
+        this.finCVesperES = null;
+
+        this.inicioCNocES = null;
+        this.finCNocES = null;
+
+        this.inicioCMatuE = null;
+        this.finCMatuE = null;
+
+        this.inicioCVesperE = null;
+        this.finCVesperE = null;
+
+        this.inicioCNocE = null;
+        this.finCNocE = null;
+
+        this.inicioCMatuC = null;
+        this.finCMatuC = null;
+
+        this.inicioCVesperC = null;
+        this.finCVesperC = null;
+
+        this.inicioCNoC = null;
+        this.finCNoC = null;
+
     }
 
     //Validar estado vacio de estructuras
@@ -106,8 +190,96 @@ public class Rutinas {
         }
     }
 
-    public static boolean estaColaVacia() {
-        if (inicioC == null) {
+    public static boolean estaColaMatuMatVacia() {
+        if (inicioCMatuMat == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaVesperMatVacia() {
+        if (inicioCVesMat == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaNocMatVacia() {
+        if (inicioCNocMat == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaMatuESVacia() {
+        if (inicioCMatuES == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaVesperESVacia() {
+        if (inicioCVesperES == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaNocESVacia() {
+        if (inicioCNocES == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaMatuEVacia() {
+        if (inicioCMatuE == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaVesperEVacia() {
+        if (inicioCVesperE == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaNocEVacia() {
+        if (inicioCNocE == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaMatuCVacia() {
+        if (inicioCMatuC == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaVesperCVacia() {
+        if (inicioCVesperC == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean estaColaNoCVacia() {
+        if (inicioCNoC == null) {
             return true;
         } else {
             return false;
@@ -595,7 +767,6 @@ public class Rutinas {
             } else if (existeLSC(ced) == true) {
                 JOptionPane.showMessageDialog(null, "Error: Estudiante existente en sistema! Favor validar.", "Estado registro Profesores", JOptionPane.ERROR_MESSAGE);
             } else {
-
                 Estudiante e = new Estudiante();
                 e.setNumCedula(ced);
                 e.setNombre(nom);
@@ -603,21 +774,20 @@ public class Rutinas {
                 e.setApeMaterno(apeMa);
                 e.setContacto(contacto);
                 e.setCorreo(correo);
-                e.setHorario(horario);
                 e.setTipoHorario(tipoHorario);
+                e.setHorario(horario);
                 NodoSC nuevo = new NodoSC();
                 nuevo.setElemento(e);
                 if (Rutinas.estaSCVacia()) {
                     inicioSC = nuevo;
                     finSC = nuevo;
-                    inicioSC.setSiguiente(inicioSC);
+                    finSC.setSiguiente(inicioSC);
                 } else if (e.getNumCedula().compareTo(inicioSC.getElemento().getNumCedula()) < 0) {
                     nuevo.setSiguiente(inicioSC);
                     inicioSC = nuevo;
                     finSC.setSiguiente(inicioSC);
                 } else if (e.getNumCedula().compareTo(finSC.getElemento().getNumCedula()) > 0) {
                     finSC.setSiguiente(nuevo);
-                    nuevo.setSiguiente(inicioSC);
                     finSC = nuevo;
                     finSC.setSiguiente(inicioSC);
                 } else {
@@ -643,7 +813,7 @@ public class Rutinas {
 
         if (!Rutinas.estaSCVacia()) {
 
-            while (aux != null && siEsta != true) {
+            while (aux != inicioSC && siEsta != true) {
 
                 if (aux.getElemento().getNumCedula().equals(pCed)) {
                     siEsta = true;
@@ -734,7 +904,6 @@ public class Rutinas {
                     if (aux == inicioSC) {
                         inicioSC = inicioSC.getSiguiente();
                         finSC.setSiguiente(inicioSC);
-                        System.out.println(" si");
                     } else if (aux == finSC) {
                         anterior.setSiguiente(inicioSC);
                         finSC = anterior;
@@ -854,7 +1023,7 @@ public class Rutinas {
 
         if (!Rutinas.estaDCVacia()) {
 
-            while (aux != null && siEsta != true) {
+            while (aux != inicioDC && siEsta != true) {
 
                 if (aux.getElemento().getNumCedula().equals(pCed)) {
                     siEsta = true;
@@ -999,43 +1168,394 @@ public class Rutinas {
 
     }
 
+    //Colas Matematicas
     public static void encolar(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
-        Estudiante e = new Estudiante();
-        e.setNumCedula(ced);
-        e.setNombre(nom);
-        e.setApePaterno(apePA);
-        e.setApeMaterno(apeMa);
-        e.setContacto(contacto);
-        e.setCorreo(correo);
-        e.setHorario(horario);
-        e.setTipoHorario(tipoHorario);
-        NodoC nuevo = new NodoC();
-        nuevo.setElemento(e);
-        if (Rutinas.estaColaVacia()) {
-            inicioC = nuevo;
-            finC = nuevo;
-        } else {
-            finC.setSiguiente(nuevo);
-            finC = nuevo;
-        }
-        JOptionPane.showMessageDialog(null, "Estudiante encolado!");
-    }
 
-    public static void mostrarCola() {
+        if (horario.equals("Matutino")) {
+            try {
 
-        if (!Rutinas.estaColaVacia()) {
-            NodoC aux = inicioC;
-            String s = "";
-            while (aux != null) {
-                s = s + aux.getElemento().getNumCedula() + " -- " + aux.getElemento().getNombre() + " -- "
-                        + aux.getElemento().getApePaterno() + " -- " + aux.getElemento().getApeMaterno() + " -- "
-                        + aux.getElemento().getTipoHorario() + " -- " + aux.getElemento().getHorario() + "-->";
-                aux = aux.getSiguiente();
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaMatuMatVacia()) {
+                    inicioCMatuMat = nuevo;
+                    finCMatuMat = nuevo;
+                } else {
+                    finCMatuMat.setSiguiente(nuevo);
+                    finCMatuMat = nuevo;
+                }
+                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+
+            } catch (Exception e) {
+                System.out.println(e);
             }
-            JOptionPane.showMessageDialog(null, "La cola contiene:\n" + s);
-        } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar. Cola vacía!");
+
         }
     }
 
+    public static boolean existeColaMatuMat(String pCed) {
+        NodoC aux = inicioCMatuMat;
+        boolean encontrado = false;
+
+        if (!Rutinas.estaColaMatuMatVacia()) {
+
+            while (aux != null && encontrado != true) {
+
+                if (aux.getElemento().getNumCedula().equals(pCed)) {
+                    encontrado = true;
+                    return encontrado;
+
+                }
+                aux.getSiguiente();
+            }
+        }
+        return encontrado;
+    }
+
+    public static void encolarVesperMat(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Vespertino")) {
+
+            try {
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaVesperMatVacia()) {
+                    inicioCVesMat = nuevo;
+                    finCVesMat = nuevo;
+                } else {
+                    finCVesMat.setSiguiente(nuevo);
+                    finCVesMat = nuevo;
+                }
+                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+
+    }
+
+    public static void encolarNocMat(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Nocturno")) {
+            try {
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaNocMatVacia()) {
+                    inicioCNocMat = nuevo;
+                    finCNocMat = nuevo;
+                } else {
+                    finCNocMat.setSiguiente(nuevo);
+                    finCNocMat = nuevo;
+                }
+                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+            } catch (Exception e) {
+                System.out.println("Revisar encolarNocMat " + e);
+            }
+
+        }
+
+    }
+
+    //Colas Estudios Sociales
+    public static void encolarMatuES(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Matutino")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaMatuESVacia()) {
+                    inicioCMatuES = nuevo;
+                    finCMatuES = nuevo;
+                } else {
+                    finCMatuES.setSiguiente(nuevo);
+                    finCMatuES = nuevo;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    public static void encolarVespES(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Vespertino")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaVesperESVacia()) {
+                    inicioCVesperES = nuevo;
+                    finCVesperES = nuevo;
+                } else {
+                    finCVesperES.setSiguiente(nuevo);
+                    finCVesperES = nuevo;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    public static void encolarNocES(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Nocturno")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaNocESVacia()) {
+                    inicioCNocES = nuevo;
+                    finCNocES = nuevo;
+                } else {
+                    finCNocES.setSiguiente(nuevo);
+                    finCNocES = nuevo;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    //Colas Espanol
+    public static void encolarMatuE(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Matutino")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaMatuEVacia()) {
+                    inicioCMatuE = nuevo;
+                    finCMatuE = nuevo;
+                } else {
+                    finCMatuE.setSiguiente(nuevo);
+                    finCMatuE = nuevo;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+
+    }
+
+    public static void encolarVespE(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Vespertino")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaVesperEVacia()) {
+                    inicioCVesperE = nuevo;
+                    finCVesperE = nuevo;
+                } else {
+                    finCVesperE.setSiguiente(nuevo);
+                    finCVesperE = nuevo;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    public static void encolarNocE(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+        if (horario.equals("Nocturno")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaNocEVacia()) {
+                    inicioCNocE = nuevo;
+                    finCNocE = nuevo;
+                } else {
+                    finCNocE.setSiguiente(nuevo);
+                    finCNocE = nuevo;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    // Colas Ciencias
+    public static void encolarMatuC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+
+        if (horario.equals("Matutino")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaMatuCVacia()) {
+                    inicioCMatuC = nuevo;
+                    finCMatuC = nuevo;
+                } else {
+                    finCMatuC.setSiguiente(nuevo);
+                    finCMatuC = nuevo;
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    public static void encolarVespeC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+        
+        if (horario.equals("Vespertino")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaVesperCVacia()) {
+                    inicioCVesperC = nuevo;
+                    finCVesperC = nuevo;
+                } else {
+                    finCVesperC.setSiguiente(nuevo);
+                    finCVesperC = nuevo;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
+
+    public static void encolarNoC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
+        
+        if (horario.equals("Nocturno")) {
+            try {
+
+                Estudiante e = new Estudiante();
+                e.setNumCedula(ced);
+                e.setNombre(nom);
+                e.setApePaterno(apePA);
+                e.setApeMaterno(apeMa);
+                e.setContacto(contacto);
+                e.setCorreo(correo);
+                e.setHorario(horario);
+                e.setTipoHorario(tipoHorario);
+                NodoC nuevo = new NodoC();
+                nuevo.setElemento(e);
+                if (Rutinas.estaColaNoCVacia()) {
+                    inicioCNoC = nuevo;
+                    finCNoC = nuevo;
+                } else {
+                    finCNoC.setSiguiente(nuevo);
+                    finCNoC = nuevo;
+                }
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+
+        }
+    }
 }

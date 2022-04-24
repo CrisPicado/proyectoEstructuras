@@ -248,8 +248,6 @@ public class RegistroCursoM extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_mail_26px.png"))); // NOI18N
 
         txtCorreo1.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
-        txtCorreo1.setMinimumSize(new java.awt.Dimension(7, 29));
-        txtCorreo1.setPreferredSize(new java.awt.Dimension(7, 29));
 
         btnCln.setText("Limpiar Tabla");
         btnCln.addActionListener(new java.awt.event.ActionListener() {
@@ -298,22 +296,6 @@ public class RegistroCursoM extends javax.swing.JFrame {
         panelRojoLayout.setHorizontalGroup(
             panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(panelRojoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel17)
-                .addGap(18, 18, 18)
-                .addComponent(btnCln)
-                .addGap(80, 80, 80)
-                .addComponent(btnGuardar)
-                .addGap(89, 89, 89)
-                .addComponent(btnEdit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBuscar)
-                .addGap(100, 100, 100)
-                .addComponent(btnEliminar)
-                .addGap(97, 97, 97)
-                .addComponent(btnMostrar)
-                .addGap(51, 51, 51))
             .addGroup(panelRojoLayout.createSequentialGroup()
                 .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelRojoLayout.createSequentialGroup()
@@ -369,10 +351,28 @@ public class RegistroCursoM extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRojoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel18)
-                .addGap(139, 139, 139))
+            .addGroup(panelRojoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRojoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCln)
+                        .addGap(80, 80, 80)
+                        .addComponent(btnGuardar)
+                        .addGap(108, 108, 108)
+                        .addComponent(btnEdit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar)
+                        .addGap(100, 100, 100)
+                        .addComponent(btnEliminar)
+                        .addGap(97, 97, 97)
+                        .addComponent(btnMostrar)
+                        .addGap(51, 51, 51))
+                    .addGroup(panelRojoLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel18)
+                        .addGap(139, 139, 139))))
         );
         panelRojoLayout.setVerticalGroup(
             panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,18 +428,21 @@ public class RegistroCursoM extends javax.swing.JFrame {
                                 .addComponent(jLabel8)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
-                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnGuardar)
-                        .addComponent(btnMostrar)
-                        .addComponent(btnBuscar)
-                        .addComponent(btnEliminar)
-                        .addComponent(btnEdit)
-                        .addComponent(btnCln))
-                    .addComponent(jLabel17))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel18)
+                .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRojoLayout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(panelRojoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnGuardar)
+                            .addComponent(btnMostrar)
+                            .addComponent(btnBuscar)
+                            .addComponent(btnEliminar)
+                            .addComponent(btnEdit)
+                            .addComponent(btnCln))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel18))
+                    .addGroup(panelRojoLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(8, 8, 8))
         );
 
@@ -565,15 +568,15 @@ public class RegistroCursoM extends javax.swing.JFrame {
 
     private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
         // TODO add your handling code here:
-        RegistroCursoM r = new RegistroCursoM();
+        ModRegistroE r = new ModRegistroE();
         r.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel17MouseClicked
 
     private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
         // TODO add your handling code here:
-        GruposMatutinos GM = new GruposMatutinos();
-        GM.setVisible(true);
+        //ejemplo GM = new ejemplo();
+        //GM.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jLabel18MouseClicked
 

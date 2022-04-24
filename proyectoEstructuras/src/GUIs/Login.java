@@ -13,17 +13,19 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
+    private String username, pass;
+   
+    
+    
     private void validar(int contador) {
+        limpiar();
         if (contador <= 3) {
-            if (txtUsuario.getText().equals("usuario") && txtContraseña.getText().equals("abc")) {
+            if (txtUsuario.getText().equals("usuario") && txtContrasena.getText().equals("abc")) {
                 MenuPrincipal m = new MenuPrincipal();
                 m.setVisible(true);
                 this.setVisible(false);
             } else {
-                txtContraseña.setText("");
-                txtUsuario.setText("");
                 JOptionPane.showMessageDialog(null, "Incorrecto");
-                System.out.println("Login Incorrecto");
                 validar(contador + 1);
             }
         } else {
@@ -31,6 +33,27 @@ public class Login extends javax.swing.JFrame {
         }
     }
 
+    public void serie(int n) {
+
+        if (n <= 5) {
+            System.out.print(n + " ");
+            serie(n + 1);
+        }
+
+    }
+
+    
+    private void limpiar(){
+        txtUsuario.setText("");
+        txtContrasena.setText("");
+    }
+    
+    private void capturarDatos(){
+        username =  txtUsuario.getText();
+        pass = txtContrasena.getText();
+    }
+    
+    
     public Login() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -50,7 +73,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
+        txtContrasena = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,9 +99,9 @@ public class Login extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Contraseña");
 
-        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+        txtContrasena.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseñaActionPerformed(evt);
+                txtContrasenaActionPerformed(evt);
             }
         });
 
@@ -104,7 +127,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -125,7 +148,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(btnIngresar)
                 .addContainerGap(146, Short.MAX_VALUE))
@@ -146,14 +169,15 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
-        
+
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
-       
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    private void txtContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaActionPerformed
+
+    }//GEN-LAST:event_txtContrasenaActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        capturarDatos();
         validar(1);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
@@ -198,7 +222,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtContrasena;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
