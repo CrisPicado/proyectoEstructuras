@@ -13,47 +13,26 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    private String username, pass;
-   
-    
-    
-    private void validar(int contador) {
-        limpiar();
+    int contador = 1;
+
+    private void validar() {
         if (contador <= 3) {
             if (txtUsuario.getText().equals("usuario") && txtContrasena.getText().equals("abc")) {
                 MenuPrincipal m = new MenuPrincipal();
                 m.setVisible(true);
                 this.setVisible(false);
             } else {
+                txtContrasena.setText("");
+                txtUsuario.setText("");
                 JOptionPane.showMessageDialog(null, "Incorrecto");
-                validar(contador + 1);
+                System.out.println("Login incorrecto");
+                contador+=1;
             }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor intantar mas tarde, número de intentos agotados");
         }
     }
 
-    public void serie(int n) {
-
-        if (n <= 5) {
-            System.out.print(n + " ");
-            serie(n + 1);
-        }
-
-    }
-
-    
-    private void limpiar(){
-        txtUsuario.setText("");
-        txtContrasena.setText("");
-    }
-    
-    private void capturarDatos(){
-        username =  txtUsuario.getText();
-        pass = txtContrasena.getText();
-    }
-    
-    
     public Login() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -177,8 +156,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContrasenaActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        capturarDatos();
-        validar(1);
+
+        validar();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
