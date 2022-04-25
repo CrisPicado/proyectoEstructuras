@@ -292,7 +292,7 @@ public class GruposEstudios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Estudiantes con matricula matutina encolados!");
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede copiar. Lista Simple vacía!");
+            JOptionPane.showMessageDialog(null, "No se puede copiar. Lista Doble vacía!");
         }
     }
 
@@ -312,7 +312,7 @@ public class GruposEstudios extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Estudiantes con matricula matutina encolados!");
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede copiar. Lista Simple vacía!");
+            JOptionPane.showMessageDialog(null, "No se puede copiar. Lista Doble vacía!");
         }
     }
 

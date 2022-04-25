@@ -364,7 +364,7 @@ public class Rutinas {
             }
             JOptionPane.showMessageDialog(null, "La lista contiene el doble de todos los numeros de la lista simple: \n" + str, "Contenido de la lista", JOptionPane.INFORMATION_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -398,7 +398,7 @@ public class Rutinas {
                 JOptionPane.showMessageDialog(null, "Dato no encontrado , vehiculo consultado no existe");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -437,7 +437,7 @@ public class Rutinas {
                         JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la lista simple", "Contenido de la lista simple vacio", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -597,7 +597,7 @@ public class Rutinas {
                         JOptionPane.showMessageDialog(null, "Dato no encontrado , profesor consultado no existe");
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -719,7 +719,7 @@ public class Rutinas {
                     JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se puede mostrar la lista doble", "Contenido de la lista doble vacio", JOptionPane.ERROR_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
@@ -754,7 +754,7 @@ public class Rutinas {
                 aux = aux.getSiguiente();
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista doble", "Contenido de la lista doble vacio", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -880,7 +880,7 @@ public class Rutinas {
                         }
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista circular simple vacio", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -920,7 +920,7 @@ public class Rutinas {
                 JOptionPane.showMessageDialog(null, "Dato no encontrado , estudiante consultado no existe");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se puede mostrar la lista circular simple", "Contenido de la lista vacio", JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -1091,7 +1091,7 @@ public class Rutinas {
                         }
                     }
                 } else {
-                    JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "No se puede mostrar la Lista Circular Simple", "Contenido de la lista vacio", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -1276,7 +1276,7 @@ public class Rutinas {
                 }
                 JOptionPane.showMessageDialog(null, "Estudiante encolado!");
             } catch (Exception e) {
-                System.out.println("Revisar encolarNocMat " + e);
+                System.out.println(e);
             }
 
         }
