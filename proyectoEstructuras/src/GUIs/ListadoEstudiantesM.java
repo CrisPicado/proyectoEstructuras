@@ -9,6 +9,7 @@ import clases.NodoLS;
 import clases.Rutinas;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -17,14 +18,13 @@ import javax.swing.table.DefaultTableModel;
 public class ListadoEstudiantesM extends javax.swing.JFrame {
 
     RegistroCursoM r = new RegistroCursoM();
-    
+
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
+    String[] titulos = {"No. Cedula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
     String[] datos = new String[8];
 
     private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;
 
-    
     /**
      * Creates new form ListadoEstudiantesM
      */
@@ -71,8 +71,8 @@ public class ListadoEstudiantesM extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,10 +82,11 @@ public class ListadoEstudiantesM extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 80));
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
 
+        tblRegistro.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -99,6 +100,7 @@ public class ListadoEstudiantesM extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblRegistro);
 
+        btnMostrar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnMostrar.setText("Mostrar Lista");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,31 +123,32 @@ public class ListadoEstudiantesM extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
                         .addComponent(btnMostrar)
-                        .addGap(300, 300, 300)
-                        .addComponent(jLabel3))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addGap(420, 420, 420)
+                        .addComponent(jLabel3)))
+                .addGap(14, 14, 14))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnMostrar)
-                        .addComponent(jLabel3))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(6, 6, 6)))
                 .addGap(28, 28, 28))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 780, 410));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 940, 410));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,8 +198,8 @@ public class ListadoEstudiantesM extends javax.swing.JFrame {
             }
         });
     }
-    
-    public  void mostrarLSTbl() {
+
+    public void mostrarLSTbl() {
         NodoLS aux = Rutinas.inicioLS;
         if (!Rutinas.estaLSVacia()) {
 
@@ -216,6 +219,30 @@ public class ListadoEstudiantesM extends javax.swing.JFrame {
                     modelo.addRow(fila);
 
                     aux = aux.getSiguiente();
+                    TableColumn cedula = tblRegistro.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistro.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistro.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistro.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistro.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistro.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn tipoH = tblRegistro.getColumn("Tipo Horario");
+                    tipoH.setMaxWidth(90);
+                    tipoH.setMinWidth(90);
+                    TableColumn horario = tblRegistro.getColumn("Horario");
+                    horario.setMaxWidth(120);
+                    horario.setMinWidth(120);
                 } catch (Exception e) {
                     System.out.println("Error: Revisar" + e);
                 }

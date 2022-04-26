@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 public class Rutinas {
 
     //Declaración de Nodos
-    
     //Nodos Lista Simple - Matematicas
     public static NodoLS inicioLS;
     public static NodoLS finLS;
@@ -30,7 +29,7 @@ public class Rutinas {
     //Nodos Lista Doble Circular - Ciencias
     public static NodoDC inicioDC;
     public static NodoDC finDC;
- 
+
     //Nodos Lista Simple - Profesores
     public static NodoProfLS inicioLSP;
     public static NodoProfLS finLSP;
@@ -1198,6 +1197,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula matutina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -1248,6 +1249,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula vespertina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -1279,6 +1282,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -1307,13 +1312,16 @@ public class Rutinas {
                     finCMatuES.setSiguiente(nuevo);
                     finCMatuES = nuevo;
                 }
-
+                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
             } catch (Exception e) {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula matutina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
+
 
     public static void encolarVespES(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
 
@@ -1338,10 +1346,13 @@ public class Rutinas {
                     finCVesperES.setSiguiente(nuevo);
                     finCVesperES = nuevo;
                 }
+                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
             } catch (Exception e) {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula vespertina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -1372,6 +1383,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -1404,6 +1417,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula matutina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
 
     }
@@ -1435,6 +1450,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula vespertina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -1464,6 +1481,8 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
 
@@ -1496,11 +1515,13 @@ public class Rutinas {
                 System.out.println(e);
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
         }
     }
 
     public static void encolarVespeC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
-        
+
         if (horario.equals("Vespertino")) {
             try {
 
@@ -1530,7 +1551,7 @@ public class Rutinas {
     }
 
     public static void encolarNoC(String ced, String nom, String apePA, String apeMa, String contacto, String correo, String horario, String tipoHorario) {
-        
+
         if (horario.equals("Nocturno")) {
             try {
 

@@ -11,6 +11,7 @@ import clases.Rutinas;
 import static clases.Rutinas.inicioSC;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -74,7 +75,7 @@ public class GruposEspanol extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo)
-                .addContainerGap(474, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,6 +100,7 @@ public class GruposEspanol extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblRegistroMatriculasM);
 
+        btnGenerar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnGenerar.setText("Generar ");
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +108,7 @@ public class GruposEspanol extends javax.swing.JFrame {
             }
         });
 
+        btnMostrar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnMostrar.setText("Mostrar");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +116,7 @@ public class GruposEspanol extends javax.swing.JFrame {
             }
         });
 
+        cbxHorarios.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cbxHorarios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccione Tipo Horario-", "Matutino", "Vespertino", "Nocturno" }));
 
         jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_back_to_32px.png"))); // NOI18N
@@ -122,6 +126,7 @@ public class GruposEspanol extends javax.swing.JFrame {
             }
         });
 
+        btnCln.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnCln.setText("Limpiar Tabla");
         btnCln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,63 +139,55 @@ public class GruposEspanol extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(85, 85, 85)
-                        .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(105, 105, 105)
-                        .addComponent(btnGenerar)
-                        .addGap(137, 137, 137)
-                        .addComponent(btnMostrar)
-                        .addGap(80, 80, 80)
-                        .addComponent(btnCln))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel17)))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(47, 47, 47)
+                .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105)
+                .addComponent(btnGenerar)
+                .addGap(137, 137, 137)
+                .addComponent(btnMostrar)
+                .addGap(80, 80, 80)
+                .addComponent(btnCln)
+                .addContainerGap(173, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGenerar)
-                    .addComponent(btnMostrar)
-                    .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCln))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addGap(40, 40, 40)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnGenerar)
+                        .addComponent(btnMostrar)
+                        .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCln))
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 860, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -308,7 +305,7 @@ public class GruposEspanol extends javax.swing.JFrame {
                 aux = aux.getSiguiente();
             }
 
-            JOptionPane.showMessageDialog(null, "Estudiantes con matricula matutina encolados!");
+            JOptionPane.showMessageDialog(null, "Estudiantes con matricula vespertina encolados!");
 
         } else {
             JOptionPane.showMessageDialog(null, "No se puede copiar. Lista Simple Circular vacía!");
@@ -328,7 +325,7 @@ public class GruposEspanol extends javax.swing.JFrame {
                 aux = aux.getSiguiente();
             }
 
-            JOptionPane.showMessageDialog(null, "Estudiantes con matricula matutina encolados!");
+            JOptionPane.showMessageDialog(null, "Estudiantes con matricula nocturna encolados!");
 
         } else {
             JOptionPane.showMessageDialog(null, "No se puede copiar. Lista Simple Circular vacía!");
@@ -357,6 +354,32 @@ public class GruposEspanol extends javax.swing.JFrame {
                     Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
                     modelo.addRow(fila);
 
+                    
+                    TableColumn cedula = tblRegistroMatriculasM.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistroMatriculasM.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistroMatriculasM.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistroMatriculasM.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistroMatriculasM.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistroMatriculasM.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn tipoH = tblRegistroMatriculasM.getColumn("Tipo Horario");
+                    tipoH.setMaxWidth(90);
+                    tipoH.setMinWidth(90);
+                    TableColumn horario = tblRegistroMatriculasM.getColumn("Horario");
+                    horario.setMaxWidth(120);
+                    horario.setMinWidth(120);
+                    
                     aux = aux.getSiguiente();
                 } catch (Exception e) {
                     System.out.println("Error: Revisar metodo mostrar cola" + e);
@@ -390,6 +413,32 @@ public class GruposEspanol extends javax.swing.JFrame {
                     Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
                     modelo.addRow(fila);
 
+                    
+                    TableColumn cedula = tblRegistroMatriculasM.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistroMatriculasM.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistroMatriculasM.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistroMatriculasM.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistroMatriculasM.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistroMatriculasM.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn tipoH = tblRegistroMatriculasM.getColumn("Tipo Horario");
+                    tipoH.setMaxWidth(90);
+                    tipoH.setMinWidth(90);
+                    TableColumn horario = tblRegistroMatriculasM.getColumn("Horario");
+                    horario.setMaxWidth(120);
+                    horario.setMinWidth(120);
+                    
                     aux = aux.getSiguiente();
                 } catch (Exception e) {
                     System.out.println("Error: Revisar metodo mostrar cola" + e);
@@ -422,6 +471,32 @@ public class GruposEspanol extends javax.swing.JFrame {
                     Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
                     modelo.addRow(fila);
 
+                    
+                    TableColumn cedula = tblRegistroMatriculasM.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistroMatriculasM.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistroMatriculasM.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistroMatriculasM.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistroMatriculasM.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistroMatriculasM.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn tipoH = tblRegistroMatriculasM.getColumn("Tipo Horario");
+                    tipoH.setMaxWidth(90);
+                    tipoH.setMinWidth(90);
+                    TableColumn horario = tblRegistroMatriculasM.getColumn("Horario");
+                    horario.setMaxWidth(120);
+                    horario.setMinWidth(120);
+                    
                     aux = aux.getSiguiente();
                 } catch (Exception e) {
                     System.out.println("Error: Revisar metodo mostrar cola" + e);

@@ -10,6 +10,7 @@ import javax.swing.DefaultComboBoxModel;
 import clases.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class RegistroCursoES extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
+    String[] titulos = {"No. Cedula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
     String[] datos = new String[8];
 
     private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;
@@ -136,6 +137,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Horarios Disponibles:");
 
+        tblRegistro.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -205,6 +207,8 @@ public class RegistroCursoES extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Correo Electrónico:");
 
+        txtCorreo.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
+
         txtCed.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         try {
             txtCed.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#-####-####")));
@@ -218,12 +222,14 @@ public class RegistroCursoES extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtContacto.setFont(new java.awt.Font("Verdana", 0, 18)); // NOI18N
         txtContacto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtContactoKeyTyped(evt);
             }
         });
 
+        btnGuardar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,6 +237,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton2.setText("Mostrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -245,6 +252,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
             }
         });
 
+        btnCln.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnCln.setText("Limpiar Tabla");
         btnCln.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,6 +260,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
             }
         });
 
+        btnEditar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +268,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
             }
         });
 
+        btnBuscar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -266,6 +276,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
             }
         });
 
+        btnEliminar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,8 +291,8 @@ public class RegistroCursoES extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel10)
@@ -320,22 +331,18 @@ public class RegistroCursoES extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(cbxHorarios, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(cbxTH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
-                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(156, 156, 156)))
+                                .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(146, 146, 146)))
                         .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 949, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel18)
                         .addGap(28, 28, 28)
                         .addComponent(btnCln)
@@ -343,13 +350,17 @@ public class RegistroCursoES extends javax.swing.JFrame {
                         .addComponent(btnGuardar)
                         .addGap(73, 73, 73)
                         .addComponent(btnEditar)
-                        .addGap(89, 89, 89)
+                        .addGap(95, 95, 95)
                         .addComponent(btnBuscar)
-                        .addGap(98, 98, 98)
-                        .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar)
+                        .addGap(94, 94, 94)
                         .addComponent(jButton2)
-                        .addGap(51, 51, 51))))
+                        .addGap(51, 51, 51))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 917, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,7 +379,7 @@ public class RegistroCursoES extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel17)
                             .addComponent(txtCorreo))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,11 +420,11 @@ public class RegistroCursoES extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(txtApM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(76, 76, 76)
+                .addGap(75, 75, 75)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2)
                             .addComponent(btnGuardar)
@@ -422,9 +433,9 @@ public class RegistroCursoES extends javax.swing.JFrame {
                             .addComponent(btnBuscar)
                             .addComponent(btnEliminar)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
+                .addGap(248, 248, 248))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 590));
@@ -679,6 +690,32 @@ public class RegistroCursoES extends javax.swing.JFrame {
                     Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
                     modelo.addRow(fila);
                     encontrado = true;
+                    
+                    
+                    TableColumn cedula = tblRegistro.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistro.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistro.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistro.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistro.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistro.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn tipoH = tblRegistro.getColumn("Tipo Horario");
+                    tipoH.setMaxWidth(90);
+                    tipoH.setMinWidth(90);
+                    TableColumn horario = tblRegistro.getColumn("Horario");
+                    horario.setMaxWidth(120);
+                    horario.setMinWidth(120);
                 }
                 aux = aux.getSiguiente();
             }

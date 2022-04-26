@@ -10,6 +10,7 @@ import clases.Rutinas;
 import static clases.Rutinas.inicioLD;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -18,14 +19,13 @@ import javax.swing.table.DefaultTableModel;
 public class ListadoEstudiantES extends javax.swing.JFrame {
 
     RegistroCursoES r = new RegistroCursoES();
-    
+
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
+    String[] titulos = {"No. Cedula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
     String[] datos = new String[8];
 
     private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;
 
-    
     /**
      * Creates new form ListadoEstudiantES
      */
@@ -64,7 +64,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("Lista Estudiantes - Curso Estudios So");
+        jLabel1.setText("Lista Estudiantes - Curso Estudios Sociales:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -72,7 +72,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 898, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,7 +83,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 80));
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -96,6 +96,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_home_page_32px.png"))); // NOI18N
 
+        tblRegistro.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -109,6 +110,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblRegistro);
 
+        jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jButton1.setText("Mostrar Lista");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,22 +124,22 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(298, 298, 298)
-                .addComponent(jLabel3)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 370, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addGap(360, 360, 360)
+                        .addComponent(jLabel3))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
@@ -145,7 +147,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
                 .addGap(15, 15, 15))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 760, 390));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 910, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,7 +160,7 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+
         mostrarLDtbl();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -196,12 +198,12 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
             }
         });
     }
-    
+
     public void mostrarLDtbl() {
         NodoLD aux = Rutinas.inicioLD;
 
         if (!Rutinas.estaLDVacia()) {
-            
+
             while (aux != null) {
 
                 try {
@@ -216,7 +218,30 @@ public class ListadoEstudiantES extends javax.swing.JFrame {
 
                     Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, tipoHorario, horarioDisponible};
                     modelo.addRow(fila);
-
+                    TableColumn cedula = tblRegistro.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistro.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistro.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistro.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistro.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistro.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn tipoH = tblRegistro.getColumn("Tipo Horario");
+                    tipoH.setMaxWidth(90);
+                    tipoH.setMinWidth(90);
+                    TableColumn horario = tblRegistro.getColumn("Horario");
+                    horario.setMaxWidth(120);
+                    horario.setMinWidth(120);
                     aux = aux.getSiguiente();
                 } catch (Exception e) {
                     System.out.println("Error: Revisar metodo mostrarLD" + e);

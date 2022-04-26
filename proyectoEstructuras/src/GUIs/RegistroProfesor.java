@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class RegistroProfesor extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo electrónico", "Asignatura"};
+    String[] titulos = {"No. Cedula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo electrónico", "Asignatura"};
     String[] datos = new String[7];
 
     private String nombre, cedula, apellidoP, apellidoM, correo, asignatura, telefono;
@@ -524,6 +524,30 @@ public class RegistroProfesor extends javax.swing.JFrame {
                     Object[] fila = {cedula, nombre, apellidoP, apellidoM, telefono, correo, asignatura};
                     modelo.addRow(fila);
                     encontrado = true;
+                    
+                    TableColumn cedula = tblRegistro.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistro.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistro.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistro.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistro.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistro.getColumn("Correo Electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn asig = tblRegistro.getColumn("Asignatura");
+                    asig.setMaxWidth(90);
+                    asig.setMinWidth(90);
+                    
+                    
                 }
                 aux = aux.getSiguiente();
             }
