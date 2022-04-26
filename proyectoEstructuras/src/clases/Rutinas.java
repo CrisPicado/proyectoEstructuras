@@ -1191,7 +1191,7 @@ public class Rutinas {
                     finCMatuMat.setSiguiente(nuevo);
                     finCMatuMat = nuevo;
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+                
 
             } catch (Exception e) {
                 System.out.println(e);
@@ -1244,7 +1244,7 @@ public class Rutinas {
                     finCVesMat.setSiguiente(nuevo);
                     finCVesMat = nuevo;
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+                
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1277,7 +1277,7 @@ public class Rutinas {
                     finCNocMat.setSiguiente(nuevo);
                     finCNocMat = nuevo;
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+                
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1312,7 +1312,7 @@ public class Rutinas {
                     finCMatuES.setSiguiente(nuevo);
                     finCMatuES = nuevo;
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+                
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -1346,7 +1346,7 @@ public class Rutinas {
                     finCVesperES.setSiguiente(nuevo);
                     finCVesperES = nuevo;
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante encolado!");
+                
             } catch (Exception e) {
                 System.out.println(e);
             }
