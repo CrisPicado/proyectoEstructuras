@@ -13,9 +13,9 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    int contador = 1;
+    //int contador = 1;
 
-    private void validar() {
+    private void validar(int contador) {
         if (contador <= 3) {
             if (txtUsuario.getText().equals("usuario") && txtContrasena.getText().equals("abc")) {
                 MenuPrincipal m = new MenuPrincipal();
@@ -26,7 +26,8 @@ public class Login extends javax.swing.JFrame {
                 txtUsuario.setText("");
                 JOptionPane.showMessageDialog(null, "Incorrecto");
                 System.out.println("Login incorrecto");
-                contador+=1;
+                //contador+=1;
+                validar(contador+1);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Por favor intantar mas tarde, número de intentos agotados");
@@ -157,7 +158,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
 
-        validar();
+        validar(1);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
