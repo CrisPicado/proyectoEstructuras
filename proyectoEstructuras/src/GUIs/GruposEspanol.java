@@ -87,6 +87,7 @@ public class GruposEspanol extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 102));
 
+        tblRegistroMatriculasM.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tblRegistroMatriculasM.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

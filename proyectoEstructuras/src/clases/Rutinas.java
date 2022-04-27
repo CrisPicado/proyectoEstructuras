@@ -321,7 +321,7 @@ public class Rutinas {
                     aux.setSiguiente(nuevo);
                 }
 
-                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la lista simple!");
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la lista simple!","Registro Estudiantes",JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -480,7 +480,7 @@ public class Rutinas {
                     nuevo.setSiguiente(aux.getSiguiente());
                     aux.setSiguiente(nuevo);
                 }
-                JOptionPane.showMessageDialog(null, "Profesor" + r.getCedula() + " - " + r.getNombre() + " " + r.getApellidoP() + " " + r.getApellidoM() + "ha sido agregado a la lista!");
+                JOptionPane.showMessageDialog(null, "Profesor" + r.getCedula() + " - " + r.getNombre() + " " + r.getApellidoP() + " " + r.getApellidoM() + "ha sido agregado a la lista!","Registro Profesores",JOptionPane.INFORMATION_MESSAGE);
             }
 
         } catch (Exception e) {
@@ -798,7 +798,7 @@ public class Rutinas {
                     aux.setSiguiente(nuevo);
                     finSC.setSiguiente(inicioSC);
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Circular Simple!");
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Circular Simple!","Registro Estudiantes",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Revisar correo electrónico, no cumple con formato", "Estado Insercion datos", JOptionPane.WARNING_MESSAGE);
@@ -1006,7 +1006,7 @@ public class Rutinas {
                     aux.setSiguiente(nuevo);
                     nuevo.getSiguiente().setAnterior(nuevo);
                 }
-                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Doble Circular!");
+                JOptionPane.showMessageDialog(null, "Estudiante: " + e.getNumCedula() + " - " + e.getNombre() + " " + e.getApePaterno() + " " + e.getApeMaterno() + " ha sido agregado a la Lista Doble Circular!","Registro Estudiantes",JOptionPane.INFORMATION_MESSAGE);
 
             }
 
@@ -1191,14 +1191,13 @@ public class Rutinas {
                     finCMatuMat.setSiguiente(nuevo);
                     finCMatuMat = nuevo;
                 }
-                
 
             } catch (Exception e) {
                 System.out.println(e);
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula matutina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 

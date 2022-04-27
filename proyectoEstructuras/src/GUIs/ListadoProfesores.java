@@ -5,7 +5,11 @@
  */
 package GUIs;
 
+import clases.NodoProfLS;
+import clases.Rutinas;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -16,7 +20,7 @@ public class ListadoProfesores extends javax.swing.JFrame {
     RegistroProfesor r = new RegistroProfesor();
 
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo electrónico", "Asignatura"};
+    String[] titulos = {"No. Cedula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo electronico", "Asignatura"};
     String[] datos = new String[7];
     private String nombre, cedula, apePa, apeMa, asignatura, contacto, correo;
 
@@ -66,7 +70,8 @@ public class ListadoProfesores extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 764, Short.MAX_VALUE))
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 855, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -76,7 +81,7 @@ public class ListadoProfesores extends javax.swing.JFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 80));
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
 
@@ -103,6 +108,11 @@ public class ListadoProfesores extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icons8_home_page_32px.png"))); // NOI18N
 
         jButton1.setText("Mostrar Lista");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -110,15 +120,15 @@ public class ListadoProfesores extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(303, 303, 303)
                         .addComponent(jButton1)
                         .addGap(300, 300, 300)
-                        .addComponent(jLabel3))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jLabel3)))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,7 +143,7 @@ public class ListadoProfesores extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 770, 390));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 940, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,6 +154,68 @@ public class ListadoProfesores extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        mostrarLSTbl();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    
+     public void mostrarLSTbl() {
+        NodoProfLS aux = Rutinas.inicioLSP;
+        if (!Rutinas.vaciaLSP()) {
+
+            while (aux != null) {
+
+                try {
+                    cedula = aux.getElemento().getCedula();
+                    nombre = aux.getElemento().getNombre();
+                    apePa = aux.getElemento().getApellidoP();
+                    apeMa = aux.getElemento().getApellidoM();
+                    contacto = aux.getElemento().getTelefono();
+                    correo = aux.getElemento().getCorreo();
+                    asignatura = aux.getElemento().getAsignatura();
+                   
+
+                    Object[] fila = {cedula, nombre, apePa, apeMa, contacto, correo, asignatura};
+                    modelo.addRow(fila);
+
+                    aux = aux.getSiguiente();
+                    TableColumn cedula = tblRegistro.getColumn("No. Cedula");
+                    cedula.setMaxWidth(100);
+                    cedula.setMinWidth(100);
+                    TableColumn nombre = tblRegistro.getColumn("Nombre");
+                    nombre.setMaxWidth(90);
+                    nombre.setMinWidth(90);
+                    TableColumn apellidoP = tblRegistro.getColumn("Apellido Paterno");
+                    apellidoP.setMaxWidth(100);
+                    apellidoP.setMinWidth(100);
+                    TableColumn apellidoM = tblRegistro.getColumn("Apellido Materno");
+                    apellidoM.setMaxWidth(110);
+                    apellidoM.setMinWidth(110);
+                    TableColumn contacto = tblRegistro.getColumn("Contacto");
+                    contacto.setMaxWidth(87);
+                    contacto.setMinWidth(87);
+                    TableColumn correo = tblRegistro.getColumn("Correo electronico");
+                    correo.setMaxWidth(200);
+                    correo.setMinWidth(200);
+                    TableColumn asignatura = tblRegistro.getColumn("Asignatura");
+                    asignatura.setMaxWidth(100);
+                    asignatura.setMinWidth(100);
+                    
+                } catch (Exception e) {
+                    System.out.println("Error: Revisar" + e);
+                }
+
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error: Imposible mostrar lista simple, lista vacia.", "Estado muestra de lista estudiantes", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */

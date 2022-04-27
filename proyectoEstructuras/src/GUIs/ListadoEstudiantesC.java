@@ -104,6 +104,7 @@ public class ListadoEstudiantesC extends javax.swing.JFrame {
             }
         });
 
+        tblRegistro.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         tblRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
