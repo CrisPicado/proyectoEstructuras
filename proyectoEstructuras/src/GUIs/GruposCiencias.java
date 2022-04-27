@@ -20,7 +20,7 @@ import javax.swing.table.TableColumn;
 public class GruposCiencias extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
-    String[] titulos = {"No. Cédula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
+    String[] titulos = {"No. Cedula", "Nombre", "Apellido Paterno", "Apellido Materno", "Contacto", "Correo Electronico", "Tipo Horario", "Horario"};
     String[] datos = new String[8];
 
     private String nombre, cedula, apePa, apeMa, tipoHorario, horarioDisponible, contacto, correo;

@@ -1249,7 +1249,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula vespertina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
 
     }
@@ -1282,7 +1282,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
 
     }
@@ -1317,7 +1317,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula matutina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 
@@ -1351,7 +1351,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula vespertina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 
@@ -1383,7 +1383,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 
@@ -1417,7 +1417,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula matutina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
 
     }
@@ -1450,7 +1450,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula vespertina", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 
@@ -1481,7 +1481,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 
@@ -1515,7 +1515,7 @@ public class Rutinas {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No se puede encolar, no se encuentran elementos con matricula nocturna", "Estado encolamiento", JOptionPane.WARNING_MESSAGE);
+            System.out.println("");
         }
     }
 
